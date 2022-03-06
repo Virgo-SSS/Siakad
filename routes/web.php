@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\homeController;
+use App\Http\Controllers\adminloginController;
+use App\Http\Controllers\student\registerController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +17,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/', [homeController::class, 'index'])->name('home');
+    Route::get('/home', [homeController::class, 'index'])->name('home');
 });
+
+
+
+// LOGIN ROUTE
+Route::get('/login', [adminloginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/loginadmin', [adminloginController::class, 'login'])->name('loginadmin');
+
+
+// Register Mahasiswa
+Route::get('/register', [registerController::class, 'index'])->name('register');
+
+
+
+
+
+
+
+Route::get('/logout', [adminloginController::class, 'logout'])->name('logout');
