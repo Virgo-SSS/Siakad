@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\adminloginController;
+use App\Http\Controllers\student\biodataController;
 use App\Http\Controllers\student\registerController;
 
 
@@ -21,6 +22,10 @@ use App\Http\Controllers\student\registerController;
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/', [homeController::class, 'index'])->name('home');
     Route::get('/home', [homeController::class, 'index'])->name('home');
+
+    // STUDENT VIEW ACCOUNT
+    Route::get('/biodata', [biodataController::class, 'index'])->name('biodatastudent');
+    Route::get('/editbiodata', [biodataController::class, 'create'])->name('editbiodatastudent');
 });
 
 
