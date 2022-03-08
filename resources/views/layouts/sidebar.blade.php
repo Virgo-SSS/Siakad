@@ -5,115 +5,168 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
+    {{-- CSS --}}
+    <link rel="stylesheet" href="{{ asset('css/sidebar.css?v=0.8') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    {{-- DATA TABLE --}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    
     <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"  >
 
     <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"  ></script>
 
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     
-    <script src="js/sidebar.js"></script>
-    <link rel="stylesheet" href="css/sidebar.css?v=0.4">
+    <!-- jQuery CDN + datatable js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" ></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" ></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"  ></script>
+    
+    
     {{-- FONT AWESOME --}}
-    <script src="https://kit.fontawesome.com/9fd8223cdb.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/9fd8223cdb.js" ></script>
+    
+    {{-- sidebar JS --}}
+    <script src="js/sidebar.js"></script>
 
-    {{-- <style>
-        .dropbtn {
-        background-color: #007BFF;
-        color: #007BFF;
-        font-size: 15px;
-        border: none;
-        cursor: pointer;
-
-        }
-
-        .dropdown {
-        position: relative;
-        display: inline-block;
-        }
-
-        .dropdown-content {
-        display: none;
-        position: absolute;
-        right: 0;
-        background-color: #f9f9f9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-        }
-
-        .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        }
-
-        .dropdown-content a:hover {background-color: #f1f1f1;}
-
-        .dropdown:hover .dropdown-content {
-        display: block;
-        }
-
-        .dropdown:hover .dropbtn {
-        background-color: #007BFF;
-        }
-    </style> --}}
+    
 </head>
 <body>
 <div class="wrapper">
     <!-- Sidebar  -->
     <nav id="sidebar">
-        <div class="sidebar-header">
-            <h3>Bootstrap Sidebar</h3>
+        <div class="sidebar-header bg-primary text-center">
+            <h3>
+                <img src="{{ asset('img/spiderman.jpg') }}" alt="" width="40px" rounded style="border-radius: 20px">
+                Siakad</h3>
         </div>
 
-        <ul class="list-unstyled components">
-            <p>Dummy Heading</p>
-            <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+
+        <ul class="list-unstyled">
+            <li >
+                <a href="{{ route('home') }}">
+                    <i class="fa-solid fa-house"></i> Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="#inputSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa-solid fa-paintbrush"></i> Data
+                </a>
+                <ul class="collapse list-unstyled" id="inputSubmenu">
+                    <li>
+                        <a href="{{ route('admin') }}">
+                            <i class="fa-solid fa-user-pen"></i> Admin
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('dosen') }}">
+                            <i class="fa-solid fa-user-pen"></i> Dosen
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('pelajar') }}">
+                            <i class="fa-solid fa-chalkboard-user"></i> Mahasiswa
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('karyawan') }}">
+                            <i class="fa-solid fa-pen-ruler"></i> Karyawan
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa-solid fa-paintbrush"></i> Layanan Akademik
+                </a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
-                        <a href="#">Home 1</a>
+                        <a href="#">
+                            <i class="fa-solid fa-user-pen"></i> Perubahan Biodata
+                        </a>
                     </li>
                     <li>
-                        <a href="#">Home 2</a>
+                        <a href="#">
+                            <i class="fa-solid fa-chalkboard-user"></i> Peminjaman Lab
+                        </a>
                     </li>
                     <li>
-                        <a href="#">Home 3</a>
+                        <a href="#">
+                            <i class="fa-solid fa-pen-ruler"></i> Ujian Susulan
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa-solid fa-ticket"></i> Support Ticket
+                        </a>
                     </li>
                 </ul>
             </li>
+
             <li>
-                <a href="#">About</a>
-            </li>
-            <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa-solid fa-graduation-cap"></i> Kemahasiswaan
+                </a>
                 <ul class="collapse list-unstyled" id="pageSubmenu">
                     <li>
-                        <a href="#">Page 1</a>
+                        <a href="#">
+                            <i class="fa-solid fa-star"></i> Prestasi & Aktivitas
+                        </a>
                     </li>
                     <li>
-                        <a href="#">Page 2</a>
+                        <a href="#">
+                            <i class="fa-solid fa-ban"></i> Pelanggaran
+                        </a>
                     </li>
                     <li>
-                        <a href="#">Page 3</a>
+                        <a href="#">
+                            <i class="fa-regular fa-copy"></i> Cuti Request
+                        </a>
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="#">Portfolio</a>
+            <li > 
+                <a href="#">
+                    <i class="fa-solid fa-hand-holding-heart"></i> Academic Guidance
+                </a>
             </li>
-            <li>
-                <a href="#">Contact</a>
+            <li >
+                <a href="#">
+                    <i class="fa-solid fa-handshake"></i> Kartu Rencana Studi
+                </a>
+            </li>
+            <li >
+                <a href="#">
+                    <i class="fa-solid fa-calendar-check"></i> Jadwal Perkuliahan
+                </a>
+            </li>
+            <li  >
+                <a href="#"> 
+                    <i class="fa-regular fa-calendar-days"></i>  Jadwal Ujian
+                </a>
+            </li>
+            <li >
+                <a href="#">
+                    <i class="fa-solid fa-id-card-clip"></i> Kartu Hasil Studi
+                </a>
+            </li>
+            <li >
+                <a href="#">
+                    <i class="fa-solid fa-money-bill-1-wave"></i> Tagihan
+                </a>
+            </li>
+            <li >
+                <a href="#">
+                    <i class="fa-solid fa-fire-flame-simple"></i> Aspiration
+                </a>
             </li>
         </ul>
 
@@ -134,7 +187,26 @@
 
                 <div>
                     <ul class="nav navbar-nav">
-                        <img src="img/spiderman.jpg" alt="" width="40px" rounded style="border-radius: 50px">
+                        <div class="dropdown" style="float:right;">
+                            <button class="dropbtn">
+                                <img src="{{ asset('img/spiderman.jpg') }}" alt="" width="40px" rounded style="border-radius: 50px">
+
+                            </button>
+                            <div class="dropdown-content">
+                                <a href="#">
+                                    <img src="https://img.icons8.com/color/48/000000/indonesia-circular.png" width="20px"/> Indonesia
+                                </a>
+                                <a href="#">
+                                    <img src="https://img.icons8.com/color/48/000000/usa-circular.png" width="20px"/> English
+                                </a>
+                                <a href="{{ route('viewaccount') }}">
+                                    <i class="fa-solid fa-circle-user"></i> View Account
+                                </a>
+                                <a href="{{ route('logout') }}">
+                                    <i class="fa-solid fa-power-off"></i> Log out
+                                </a>
+                            </div>
+                          </div>
                         
                     </ul>
                 </div>
@@ -145,10 +217,7 @@
 
         {{-- CONTENT --}}
         <div class="content">
-            <h2>Collapsible Sidebar Using Bootstrap 4</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
+           @yield('content')
            
         </div>
         {{-- END CONTENT --}}

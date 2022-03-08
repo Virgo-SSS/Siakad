@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\student;
+namespace App\Http\Controllers\karyawan;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class biodataController extends Controller
+class karyawanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class biodataController extends Controller
      */
     public function index()
     {
-        return view('biodatastudent.index');
+        return view('karyawan.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class biodataController extends Controller
      */
     public function create()
     {
-        return view('biodatastudent.editbiodata');
+        //
     }
 
     /**
