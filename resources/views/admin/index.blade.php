@@ -11,9 +11,9 @@
 </div>
 @endif
 
-@if (Session::has('erro'))
+@if (Session::has('error'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>{{ Session::get('erro') }}</strong>
+    <strong>{{ Session::get('error') }}</strong>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -32,14 +32,17 @@
     <table id="admintable" class="table table-striped display" style="width:100%">
         <thead>
             <tr>
+                <th>NO</th>
                 <th>Name</th>
                 <th>Email</th> 
                 <th>Action</th>
             </tr>
         </thead>
+        <?php $i=1 ?>
         <tbody>
             @foreach ($admins as $admin)
-            <tr>
+            <tr>   
+                <td>{{ $i++ }}</td>
                 <td>{{ $admin->name }}</td>
                 <td>{{ $admin->email }}</td>
                 <td>

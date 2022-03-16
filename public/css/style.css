@@ -48,3 +48,100 @@ display: block;
 background-color: #007BFF;
 }
 /* END IMAGE DROP DOWN PROFILE */
+
+/* Notif button */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
+
+.notif{
+  position: absolute;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  margin: 0 15px;
+  perspective: 1000px;
+}
+.notif a{
+  font-size: 12px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform .25s;
+  font-family: 'Montserrat', sans-serif;
+  
+}
+.notif a:before,
+.notif a:after{
+  position: absolute;
+  content: "View All";
+  height: 30px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.notif a:before{
+  color: #fff;
+  background: #000;
+  transform: rotateY(0deg) translateZ(25px);
+}
+.notif a:after{
+  color: #000;
+  transform: rotateX(90deg) translateZ(25px);
+}
+.notif a:hover{
+  transform: translateZ(-25px) rotateX(-90deg);
+}
+
+/* Button info */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
+
+.notif2{
+  position: relative;
+  display: inline-flex;
+  width: 180px;
+  height: 55px;
+  text-align: center;
+  perspective: 1000px;
+  margin-right: 250px;
+
+}
+.notif2 a{
+  font-size: 12px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform .25s;
+  font-family: 'Montserrat', sans-serif;
+  
+  
+}
+.notif2 a:before,
+.notif2 a:after{
+  position: absolute;
+  content: "INFO";
+  height: 30px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: 5px solid black; */
+  box-sizing: border-box;
+  border-radius: 5px;
+  text-align: center;
+}
+.notif2 a:before{
+  color: #fff;
+  background: rgb(1, 27, 255);
+  transform: rotateY(0deg) translateZ(25px);
+}
+.notif2 a:after{
+  color: rgb(255, 255, 255);
+  background: #000;
+  transform: rotateX(90deg) translateZ(25px);
+}
+.notif2 a:hover{
+  transform: translateZ(-25px) rotateX(-90deg);
+}

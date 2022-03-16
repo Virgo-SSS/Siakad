@@ -21,6 +21,7 @@ class UserFactory extends Factory
             'name' => 'virgo',
             'email' => 'virgo@gmail.com',
             'password' => bcrypt('virgo'),
+            'role' => 1,
             'remember_token' => Str::random(10),
         ];
     }

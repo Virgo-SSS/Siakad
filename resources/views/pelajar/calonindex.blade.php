@@ -2,9 +2,9 @@
 
 @section('content')
 
-@if (Session::has('success'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>{{ Session::get('success') }}</strong>
+@if(Session::has('error'))
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>{{ Session::get('error') }}</strong>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
     </button>
@@ -12,7 +12,7 @@
 @endif
 
 
-<h3 class="text-center">Mahasiswa</h3>
+<h3 class="text-center"> Calon Mahasiswa</h3>
 
 <div class="container">
     <table id="admintable" class="table table-striped display" style="width:100%">
@@ -22,18 +22,17 @@
                 <th class="col-md-1">Name</th>
                 <th class="col-md-2">Email</th>
                 <th class="col-md-1">No WA</th>
-               
                 <th class="col-md-2">Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($rgs2 as $rg)
+            @foreach ($rgs as $r)
             <tr>
-                <td>{{ $rg->name }}</td>
-                <td>{{ $rg->email }}</td>
-                <td>{{ $rg->no_wa}}</td>
+                <td>{{ $r->name }}</td>
+                <td>{{ $r->email }}</td>
+                <td>{{ $r->no_wa}}</td>
                 <td>
-                    <a href="{{ route('editpelajar', $rg->id) }}" class="btn btn-success">Edit</a> | <a href="{{ route('deletepelajar', $rg->id) }}" class="btn btn-danger">Delete</a>           
+                    <a href="{{ route('showdatacalon', $r->id) }}" class="btn btn-success">Show</a> | <a href="{{ route('deletepelajar', $r->id) }}" class="btn btn-danger">Delete</a>           
                 </td>
             </tr>
             @endforeach

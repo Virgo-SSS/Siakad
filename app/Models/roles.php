@@ -13,5 +13,13 @@ class roles extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public function Rdosen()
+    {
+        return $this->hasMany(dosen::class);
+    }
+   
+  
+    
 }
 

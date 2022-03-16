@@ -13,17 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dosens', function (Blueprint $table) {
-            $table->string('nidn')->unique()->primary();
-            $table->string('nama');
+        Schema::create('karyawans', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('jeniskelamin')->nullable();
-            $table->string('alamat')->nullable();
-            $table->string('no_hp');
-            $table->string('foto')->nullable();
+            $table->bigInteger('nohp');
+            $table->string('image')->nullable();
             $table->string('role');
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -35,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dosens');
+        Schema::dropIfExists('karyawans');
     }
 };

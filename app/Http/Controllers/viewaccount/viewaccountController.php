@@ -11,7 +11,7 @@ class viewaccountController extends Controller
     public function index()
     {
         $admins = User::all();
-        return view('viewaccount.index');
+        return view('viewaccount.index', compact('admins'));
     }
     
     public function create()

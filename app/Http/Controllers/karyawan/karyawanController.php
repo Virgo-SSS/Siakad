@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\karyawan;
 
-use App\Http\Controllers\Controller;
+use App\Models\karyawan;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class karyawanController extends Controller
 {
@@ -14,7 +16,8 @@ class karyawanController extends Controller
      */
     public function index()
     {
-        return view('karyawan.index');
+        $employees = karyawan::all();
+        return view('karyawan.index', compact('employees'));
     }
 
     /**
@@ -24,7 +27,7 @@ class karyawanController extends Controller
      */
     public function create()
     {
-        //
+        return view('karyawan.createkaryawan');
     }
 
     /**
@@ -35,7 +38,28 @@ class karyawanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:karyawans',
+            'password' => 'required',
+            'nohp' => 'required',
+            'role' => 'required',
+            'image' => 'image|file'
+            
+        ]);
+
+        $karyawan = new karyawan;
+        $karyawan->name = $request->name;
+        $karyawan->email = $request->email;
+        $karyawan->password = $request->password;
+        $karyawan->nohp = $request->nohp;
+        $karyawan->role = $request->role;
+        if($request->file('image')){
+            $karyawan->image = $request->file('image')->store('employee-img');
+        }
+        $karyawan->save();
+
+        return redirect(route('karyawan'))->with('success', 'Employee Created');
     }
 
     /**
@@ -57,7 +81,8 @@ class karyawanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $karyawan = karyawan::find($id);
+        return view('karyawan.editkaryawan', compact('karyawan'));
     }
 
     /**
@@ -69,7 +94,31 @@ class karyawanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'nohp' => 'required',
+            'role' => 'required',
+            'image' => 'image|file'
+            
+        ]);
+
+        $karyawan = karyawan::find($id);
+        $karyawan->name = $request->name;
+        $karyawan->email = $request->email;
+        $karyawan->password = $request->password;
+        $karyawan->nohp = $request->nohp;
+        $karyawan->role = $request->role;
+        if($request->file('image')){
+            if($request->oldimage){
+                Storage::delete($request->oldimage);
+            }
+            $karyawan->image = $request->file('image')->store('employee-img');
+        }
+        $karyawan->update();
+
+        return redirect(route('karyawan'))->with('success', 'Employee Updated');
     }
 
     /**
@@ -80,6 +129,12 @@ class karyawanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $karyawan = karyawan::find($id);
+        if($karyawan->image){
+            Storage::delete($karyawan->image);
+        }
+        $karyawan->delete();
+
+        return redirect(route('karyawan'))->with('success', 'Employee Deleted');
     }
 }

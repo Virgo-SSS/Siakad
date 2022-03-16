@@ -13,17 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pelajars', function (Blueprint $table) {
+        Schema::create('registrasis', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('nim')->unique()->nullable();
-            $table->string('nama');
+            $table->string('name');
             $table->string('email')->unique();
+            $table->bigInteger('no_wa');
             $table->string('password');
-            $table->string('alamat')->nullable();
-            $table->bigInteger('no_hp');
-            $table->string('jeniskelamin')->nullable();
-            $table->string('foto')->nullable();
-            $table->rememberToken();
+            $table->string('confirm_password');
+            $table->boolean('isMahasiswa');
             $table->timestamps();
         });
     }
@@ -35,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pelajars');
+        Schema::dropIfExists('registrasis');
     }
 };

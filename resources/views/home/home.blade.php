@@ -1,67 +1,68 @@
-{{-- @extends('layouts.navbar') --}}
 @extends('layouts.sidebar')
 
+
 @section('content')
+<div class="container">
+  <div class="row ml-5">
+    <div class="card card-1A">
+      <div class="row">
+        <div class="cardsA" >
+         
+          <div style="position: relative; float:left">
+              <img src="{{ asset('img/profile.jpg') }}" alt="" rounded width="80px" width="80px" style="border-radius: 20px">
+          </div>
+      
+          <div class="col-10">
+            
+            @if(auth('web')->user())
+            <h3 class="card_titleA">Hi, {{ auth('web')->user()->name }} ({{ auth('web')->user()->id }})</h3>
+            <div class="card_textA">
+              <p>Selamat datang di siakad, silahkan pilih menu yang tersedia.</p>
+                <p>Tetap Semangat Belajar ya</p>
+                
+              </div>
+              @endif
+              
+              @if(auth('dosen')->user())
+              <h3 class="card_titleA">Hi, {{ auth('dosen')->user()->nama }} ({{ auth('dosen')->user()->nidn }})</h3>
+              <div class="card_textA">
+                <p>Selamat datang di siakad, silahkan pilih menu yang tersedia.</p>
+                <p>Tetap Semangat Belajar ya</p>
+              </div>
+              @endif     
 
-<div class="container text-center">
-    <div class="row text-center">
-      <!-- List item-->
-      <div class="col-xl-3 col-sm-6 mb-5">
-        <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-          <h5 class="mb-0">Admin</h5>
-          <span class="small text-uppercase text-muted">30</span>
-          <ul class="social mb-0 list-inline mt-3">
-            <a href="{{ route('admin') }}">
-              <button class="bg-primary">INFO</button>
+              
+              @if(auth('pelajar')->user())
+                @if(auth('pelajar')->user()->isMahasiswa == 1)
+                <h3 class="card_titleA">Hi, {{ auth('pelajar')->user()->name }}</h3>
+                <div class="card_textA">
+                  <p>Selamat datang di siakad, silahkan pilih menu yang tersedia.</p>
+                  <p>Tetap Semangat Belajar ya</p>
+                </div>
+                @endif
 
-            </a>
-          </ul>
+                @if(auth('pelajar')->user()->isMahasiswa == 0)
+                  <h3 class="card_titleA text-center">Hi, {{ auth('pelajar')->user()->name }}</h3>
+                  <div class="card_textA text-center">
+                    <p>Silahkan Isi Formulir Pendaftaran untuk melanjutkan pendaftaran</p>
+                  </div>    
+                @endif
+            @endif 
+            
+          </div>
         </div>
       </div>
-
-      <div class="col-xl-3 col-sm-6 mb-5">
-        <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-          <h5 class="mb-0">Dosen</h5>
-          <span class="small text-uppercase text-muted">30</span>
-          <ul class="social mb-0 list-inline mt-3">
-            <a href="{{ route('dosen') }}">
-              <button class="bg-primary">INFO</button>
-
-            </a>
-          </ul>
-        </div>
-      </div>
-     
-      <div class="col-xl-3 col-sm-6 mb-5">
-        <div class="bg-white rounded shadow-sm py-5 px-4">
-            <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-            <h5 class="mb-0">Mahasiswa</h5>
-            <span class="small text-uppercase text-muted">30</span>
-            <ul class="social mb-0 list-inline mt-3">
-              <a href="{{ route('pelajar') }}">
-                <button class="bg-primary">INFO</button>
-  
-              </a>
-            </ul>
-        </div>
-      </div>
-     
-      <div class="col-xl-3 col-sm-6 mb-5">
-        <div class="bg-white rounded shadow-sm py-5 px-4">
-            <img src="https://bootdey.com/img/Content/avatar/avatar8.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-            <h5 class="mb-0">Karyawan</h5>
-            <span class="small text-uppercase text-muted">30</span>
-            <ul class="social mb-0 list-inline mt-3">
-              <a href="{{ route('karyawan') }}">
-                <button class="bg-primary">INFO</button>
-  
-              </a>
-            </ul>
-        </div>
-      </div>
-      <!-- End List Item-->
 
     </div>
   </div>
+
+  <div class="row mt-3">
+
+    @include('home.adminhome')
+    @include('home.dosenhome')
+    @include('home.pelajarhome')
+    @include('home.calon')
+  </div>
+</div>
 
 @endsection

@@ -1,5 +1,7 @@
 <?php
 
+
+
 return [
 
     /*
@@ -17,6 +19,18 @@ return [
         'guard' => 'web',
         'passwords' => 'users',
     ],
+    'dosens' => [
+        'guard' => 'dosen',
+        'model' => App\Models\dosen::class,
+    ],
+    'pelajars' => [
+        'guard' => 'pelajar',
+        'model' => App\Models\registrasi::class,
+    ],
+    // 'karyawans' => [
+    //     'guard' => 'karyawan',
+    //     'model' => App\Models\karyawan::class,
+    // ],
 
     /*
     |--------------------------------------------------------------------------
@@ -40,6 +54,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'dosen' => [
+            'driver' => 'session',
+            'provider' => 'dosens',
+        ],
+        'pelajar' => [
+            'driver' => 'session',
+            'provider' => 'pelajars',
+        ]
     ],
 
     /*
@@ -64,6 +86,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'dosens' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\dosen::class,
+        ],
+        'pelajars' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\registrasi::class,
+        ]
 
         // 'users' => [
         //     'driver' => 'database',
