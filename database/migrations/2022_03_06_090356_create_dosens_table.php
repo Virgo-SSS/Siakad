@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('alamat')->nullable();
             $table->string('no_hp');
             $table->string('foto')->nullable();
-            $table->string('role');
             $table->rememberToken();
             $table->timestamps();
         });

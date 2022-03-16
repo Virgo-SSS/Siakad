@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->bigInteger('nohp');
+            $table->string('posisi');
             $table->string('image')->nullable();
-            $table->string('role');
             $table->timestamps();
         });
     }
