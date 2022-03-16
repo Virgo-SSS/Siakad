@@ -38,6 +38,12 @@ class logincontroller extends Controller
             return redirect()->intended('/home');
         }
 
+        if (Auth::guard('karyawan')->attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('/home');
+        }
+
         
 
         return redirect('/login')->with('error', 'Email atau Password salah');

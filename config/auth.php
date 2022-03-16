@@ -27,10 +27,10 @@ return [
         'guard' => 'pelajar',
         'model' => App\Models\registrasi::class,
     ],
-    // 'karyawans' => [
-    //     'guard' => 'karyawan',
-    //     'model' => App\Models\karyawan::class,
-    // ],
+    'karyawans' => [
+        'guard' => 'karyawan',
+        'model' => App\Models\karyawan::class,
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -61,7 +61,12 @@ return [
         'pelajar' => [
             'driver' => 'session',
             'provider' => 'pelajars',
+        ],
+        'karyawan' => [
+            'driver' => 'session',
+            'provider' => 'karyawans',
         ]
+        
     ],
 
     /*
@@ -93,6 +98,10 @@ return [
         'pelajars' => [
             'driver' => 'eloquent',
             'model' => App\Models\registrasi::class,
+        ],
+        'karyawans' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\karyawan::class,
         ]
 
         // 'users' => [

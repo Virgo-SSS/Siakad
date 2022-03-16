@@ -57,23 +57,32 @@
                 </div>
             </div>
             
-        <div class="row mt-3">
-            <div class="col-6">
-                <label for="inp" class="form-label">Password</label>
-                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="inp" required>
-                @error('password')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-                @enderror
-            </div>
-                
-         
             <div class="row mt-3">
                 <div class="col-6">
-                    <input type="number" value="4" hidden name="role" class="form-control" id="inp" required>
+                    <label for="inp" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="inp" required>
+                    @error('password')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
+                <div class="col-6">
+                    <label for="inp" class="form-label">Posisi</label>
+                    <select name="posisi" id="inp" class="form-control">
+                        <option selected disabled>Posisi</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Petugas Kebersihan">Petugas Kebersihan</option>
+                        <option value="Kepala Lab Fisika">Kepala Lab Fisika</option>
+                        <option value="Kepala Lab Kimia">Kepala Lab Kimia</option>
+                        <option value="Kepala Lab Komputer">Kepala Lab Komputer</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Security">Security</option>
+                    </select>
+                </div>
+                  
             </div>
+         
             <button type="submit" class="btn btn-primary mt-3" style="float: right">Submit</button>
         </form>
     </div>

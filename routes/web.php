@@ -23,8 +23,14 @@ use App\Http\Controllers\viewaccount\viewaccountController;
 |
 */
 
-// ROUTE FOR ALL USER
-Route::group(['middleware' => 'auth:web,dosen,pelajar'], function() {
+
+// WEB = Admin
+//  dosen = dosen
+// pelajar = pelajar
+// karyawan = karyawan
+
+// ROUTE FOR ALL guard
+Route::group(['middleware' => 'auth:web,dosen,pelajar,karyawan'], function() {
     Route::get('/', [homeController::class, 'index'])->name('home');
     Route::get('/home', [homeController::class, 'index'])->name('home');  
     Route::get('/aspiration', [homeController::class, 'aspiration'])->name('aspiration');  
@@ -37,11 +43,25 @@ Route::group(['middleware' => 'auth:web,dosen,pelajar'], function() {
 
 });
 
+
+
+// Route for Registrasi with isMahasiswa = 0
 Route::group(['middleware' => 'auth:pelajar'], function() {
 
     Route::post('/formulirpelajar', [pelajarController::class, 'store'])->name('formulirpelajar');
 
 });
+
+Route::group(['middleware' => 'auth:web,karyawan'], function() {
+
+    // if(auth('web')->user() || auth('karyawan')->user()->posisi == 'Marketing' ){
+        
+    // }
+    Route::get('/calonmahasiswa', [pelajarController::class, 'calon'])->name('calonmahasiswa');
+    Route::get('/showdatacalon/{id}', [pelajarController::class, 'showdata'])->name('showdatacalon');
+    Route::put('/acceptcalon/{id}', [pelajarController::class, 'accept'])->name('acceptcalon');
+});
+
 
 
 // Route Just For admin
@@ -70,12 +90,6 @@ Route::group(['middleware' => 'auth:web'], function() {
     Route::put('/updatepelajar/{nim}', [pelajarController::class, 'update'])->name('updatepelajar');
     Route::get('/deletepelajar/{nim}', [pelajarController::class, 'destroy'])->name('deletepelajar');
    
-    // Calon mahasiswa
-    Route::get('/calonmahasiswa', [pelajarController::class, 'calon'])->name('calonmahasiswa');
-    Route::get('/showdatacalon/{id}', [pelajarController::class, 'showdata'])->name('showdatacalon');
-    Route::put('/acceptcalon/{id}', [pelajarController::class, 'accept'])->name('acceptcalon');
-
-
     // karyawan
     Route::get('/karyawan', [karyawanController::class, 'index'])->name('karyawan');
     Route::get('/createkaryawan', [karyawanController::class, 'create'])->name('createkaryawan');
@@ -91,8 +105,9 @@ Route::group(['middleware' => 'auth:web'], function() {
 
 
 // LOGIN ROUTE
-Route::get('/login', [logincontroller::class, 'index'])->name('login')->middleware('guest:web,dosen,pelajar');
+Route::get('/login', [logincontroller::class, 'index'])->name('login')->middleware('guest:web,dosen,pelajar,karyawan');
 Route::post('/loginsubmit', [logincontroller::class, 'login'])->name('loginsubmit');
+
 
 // Register Mahasiswa
 Route::get('/register',[registrasiController::class, 'index'])->name('register');

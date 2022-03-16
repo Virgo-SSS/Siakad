@@ -94,7 +94,29 @@
             </li>
             @endif
 
-            @if(auth('web')->user() || auth('dosen')->user() || auth('pelajar')->user()->isMahasiswa == 1)
+            @if(auth('karyawan')->user())
+                @if(auth('karyawan')->user()->posisi == 'Marketing')
+                <li>
+                    <a href="#inputSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fa-solid fa-paintbrush"></i> Data
+                    </a>
+                    <ul class="collapse list-unstyled" id="inputSubmenu">
+                        <li>
+                            <a href="{{ route('pelajar') }}">
+                                <i class="fa-solid fa-chalkboard-user"></i> Mahasiswa
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('calonmahasiswa') }}">
+                                <i class="fa-solid fa-user-pen"></i> Calon Mahasiswa
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+            @endif
+
+            @if(auth('web')->user() || auth('dosen')->user() || auth('karyawan')->user() || auth('pelajar')->user()->isMahasiswa == 1 )
             <li>
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <i class="fa-solid fa-paintbrush"></i> Layanan Akademik
@@ -137,7 +159,7 @@
             </li>
             @endif
             
-            @if(auth('dosen')->user() || auth('web')->user() || auth('pelajar')->user()->isMahasiswa == 1)
+            @if(auth('dosen')->user() || auth('web')->user() || auth('karyawan')->user() || auth('pelajar')->user()->isMahasiswa == 1)
             <li>
                 <a href="#">
                     <i class="fa-solid fa-user-pen"></i> Office 365
@@ -162,14 +184,18 @@
                                 <i class="fa-solid fa-ban"></i> Pelanggaran
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa-regular fa-copy"></i> Cuti Request
-                            </a>
-                        </li>
                     </ul>
                     
                 </li>
+            @endif
+
+            @if(auth('dosen')->user() || auth('web')->user() || auth('karyawan')->user() || auth('pelajar')->user()->isMahasiswa == 1)
+
+            <li>
+                <a href="#">
+                    <i class="fa-regular fa-copy"></i> Cuti Request
+                </a>
+            </li>
             @endif
 
             @if(auth('pelajar')->user())
@@ -200,7 +226,7 @@
                 @endif
             @endif
 
-            @if(auth('dosen')->user() || auth('web')->user() || auth('pelajar')->user()->isMahasiswa == 1)
+            @if(auth('dosen')->user() || auth('web')->user() ||auth('karyawan')->user() || auth('pelajar')->user()->isMahasiswa == 1)
             <li > 
                 <a href="#">
                     <i class="fa-solid fa-hand-holding-heart"></i> Academic Guidance
@@ -344,6 +370,13 @@
                                     <img src="{{ asset('storage/'.auth('dosen')->user()->foto) }}" alt="" width="40px" rounded style="border-radius: 50px">
                                 @endif
 
+                                @if(auth('karyawan')->user())
+                                    @if(auth('karyawan')->user()->foto == null)
+                                        <img src="{{ asset('img/profile.jpg') }}" alt="" width="40px" rounded style="border-radius: 50px">
+                                    @endif
+                                    <img src="{{ asset('storage/'.auth('karyawan')->user()->foto) }}" alt="" width="40px" rounded style="border-radius: 50px">
+                                @endif
+
                                 @if(auth('pelajar')->user()) 
                                     @if(auth('pelajar')->user()->isMahasiswa == 0)
                                         <img src="{{ asset('img/profile.jpg') }}" alt="" width="40px" rounded style="border-radius: 50px">
@@ -372,7 +405,8 @@
                                     @endif
                                     
                                 @endif
-                                @if(auth('dosen')->user() || auth('web')->user())
+
+                                @if(auth('dosen')->user() || auth('web')->user() || auth('karyawan')->user())
                                     <a href="{{ route('viewaccount') }}">
                                         <i class="fa-solid fa-circle-user"></i> View Account
                                     </a>

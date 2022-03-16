@@ -43,7 +43,7 @@ class karyawanController extends Controller
             'email' => 'required|email|unique:karyawans',
             'password' => 'required',
             'nohp' => 'required',
-            'role' => 'required',
+            'posisi' => 'required',
             'image' => 'image|file'
             
         ]);
@@ -51,9 +51,9 @@ class karyawanController extends Controller
         $karyawan = new karyawan;
         $karyawan->name = $request->name;
         $karyawan->email = $request->email;
-        $karyawan->password = $request->password;
+        $karyawan->password = bcrypt($request->password);
         $karyawan->nohp = $request->nohp;
-        $karyawan->role = $request->role;
+        $karyawan->posisi = $request->posisi;
         if($request->file('image')){
             $karyawan->image = $request->file('image')->store('employee-img');
         }
@@ -99,7 +99,7 @@ class karyawanController extends Controller
             'email' => 'required|email',
             'password' => 'required',
             'nohp' => 'required',
-            'role' => 'required',
+            'posisi' => 'required',
             'image' => 'image|file'
             
         ]);
@@ -107,9 +107,9 @@ class karyawanController extends Controller
         $karyawan = karyawan::find($id);
         $karyawan->name = $request->name;
         $karyawan->email = $request->email;
-        $karyawan->password = $request->password;
+        $karyawan->password = bcrypt($request->password);
         $karyawan->nohp = $request->nohp;
-        $karyawan->role = $request->role;
+        $karyawan->posisi = $request->posisi;
         if($request->file('image')){
             if($request->oldimage){
                 Storage::delete($request->oldimage);

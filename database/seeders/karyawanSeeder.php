@@ -20,8 +20,7 @@ class karyawanSeeder extends Seeder
             'email' => 'doe@gmail.com',
             'password' => bcrypt('password'),
             'nohp' => '081232321212',
-            'posisi' => 'Marketing',
-            'image' => 'img/karyawan.png'
+            'posisi' => 'Marketing'
         ]);
     }
 }
