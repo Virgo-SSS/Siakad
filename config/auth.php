@@ -23,13 +23,17 @@ return [
         'guard' => 'dosen',
         'model' => App\Models\dosen::class,
     ],
-    'pelajars' => [
-        'guard' => 'pelajar',
+    'registrasis' => [
+        'guard' => 'registrasi',
         'model' => App\Models\registrasi::class,
     ],
     'karyawans' => [
         'guard' => 'karyawan',
         'model' => App\Models\karyawan::class,
+    ],
+    'pelajars' => [
+        'guard' => 'pelajar',
+        'model' => App\Models\pelajar::class,
     ],
 
     /*
@@ -65,7 +69,11 @@ return [
         'karyawan' => [
             'driver' => 'session',
             'provider' => 'karyawans',
-        ]
+        ],
+        'registrasi' => [
+            'driver' => 'session',
+            'provider' => 'registrasis',
+        ],
         
     ],
 
@@ -97,12 +105,16 @@ return [
         ],
         'pelajars' => [
             'driver' => 'eloquent',
-            'model' => App\Models\registrasi::class,
+            'model' => App\Models\pelajar::class,
         ],
         'karyawans' => [
             'driver' => 'eloquent',
             'model' => App\Models\karyawan::class,
-        ]
+        ],
+        'registrasis' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\registrasi::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',

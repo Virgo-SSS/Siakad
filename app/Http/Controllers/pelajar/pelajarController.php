@@ -132,63 +132,18 @@ class pelajarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($nim)
-    {
-        $pelajar = detailpelajar::find($nim);
-        if($pelajar->foto){
-            Storage::delete($pelajar->foto);
-        }
-        $pelajar->delete();
-        return redirect(route('pelajar'))->with('success', 'Student Deleted');
-    }
+   
 
     public function calon()
     {
         $rgs = registrasi::where('isMahasiswa', '=', '0')->get();
-        return view('pelajar.calonindex', compact('rgs'));
+        return view('pelajarcalon.calonindex', compact('rgs'));
 
     }
 
 
     public function showdata($id)
     {
-        // dd('babi');
-        // $dtl = detailpelajar::select('detailpelajars.*', 'registrasis.*')
-        //     ->join('registrasis', 'registrasis.id', '=', 'detailpelajars.regis_id')
-        //     ->where('regis_id', '=', $id)->first();
-        // return view('pelajar.showdata', compact('dtl'));
-
-       
-
-
-
-        // $dtl = detailpelajar::select('detailpelajars.*', 'registrasis.*');
-        // if($id){
-        //     // $dtl = detailpelajar::select('detailpelajars.*', 'registrasis.*');
-
-        //     if(empty($dtl = $dtl->where('regis_id', '=', $id)->first())){
-        //         return back()->with('error', 'Data Tidak Ditemukan');
-        //     }
-           
-        // }
-        // $dtl = $dtl->join('registrasis', 'registrasis.id', '=', 'detailpelajars.regis_id')
-        // ->where('regis_id', '=', $id)->first();
-        // return view('pelajar.showdata', compact('dtl'));
-        
-        // $dtl = detailpelajar::select('detailpelajars.*', 'registrasis.*')
-        //     ->join('registrasis', 'registrasis.id', '=', 'detailpelajars.regis_id')
-        //     ->where('regis_id', '=', $id)->first();
-        // if($dtl){
-        //     $dtl = detailpelajar::select('detailpelajars.*', 'registrasis.*')
-        //     ->join('registrasis', 'registrasis.id', '=', 'detailpelajars.regis_id')
-        //     ->where('regis_id', '=', $id)->first();
-        //     return view('pelajar.showdata', compact('dtl'));
-        // } else {
-            
-        //     return back()->with('error', 'Calon Mahasiswa Belum Melakukan Input Data');
-        // }
-
-
         $dtl = detailpelajar::select('detailpelajars.*', 'registrasis.*')
             ->join('registrasis', 'registrasis.id', '=', 'detailpelajars.regis_id')
             ->where('regis_id', '=', $id)->first();
@@ -196,39 +151,6 @@ class pelajarController extends Controller
             return back()->with('error', 'Calon Mahasiswa Belum Melakukan Input Data');
         } 
         return view('pelajar.showdata', compact('dtl'));
-        
-
-        // $reg = registrasi::all();
-        // $dtl = detailpelajar::select('detailpelajars.*', 'registrasis.*');
-        // $dtl->join('registrasis', 'registrasis.id', '=', 'detailpelajars.regis_id');
-        // if($id ){
-            //     $dtl->where('regis_id', '=', $id)->first();
-            //     return view('pelajar.showdata', compact('dtl'));
-            
-            // 
-
-
-            
-            // $dtl = $dtl->join('registrasis', 'registrasis.id', '=', 'detailpelajars.regis_id');
-            // $dtl = detailpelajar::select('detailpelajars.*', 'registrasis.*');
-
-
-        
-        // if($id){
-        //     if($id === $dtl->id) {
-        //     } else {
-        //         return back()->with('error', 'Calon Mahasiswa ini belum Mengisi Formulir');
-
-        //     }
-
-        // }
-            
-
-            
-            // if(!$id == $dtl->id){
-                
-            // 
-
             
     }
         

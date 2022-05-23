@@ -89,12 +89,6 @@
                     <input type="text" name="alamat" value="{{ old('alamat') }}"class="form-control" id="exampleInputPassword1" >
                 </div>
             </div>
-            
-            <div class="row mt-3">
-                <div class="col-6">
-                    <input type="number" value="2" hidden name="role" class="form-control" id="exampleInputPassword1" required>
-                </div>
-            </div>
             <button type="submit" class="btn btn-primary mt-3" style="float: right">Submit</button>
         </form>
     </div>

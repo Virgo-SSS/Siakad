@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->bigInteger('nohp');
+            $table->bigInteger('no_hp');
             $table->string('posisi');
             $table->string('image')->nullable();
             $table->timestamps();

@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('registrasis', function (Blueprint $table) {
+        Schema::create('ibus', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('confirm_password');
-            $table->boolean('isMahasiswa');
+            $table->bigInteger('nik');
+            $table->date('tgllahir');
+            $table->bigInteger('no_hp');
+            $table->string('pendidikan_terakhir');
+            $table->string('penghasilan');
+            $table->integer('id_pelajar');
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('registrasis');
+        Schema::dropIfExists('ibus');
     }
 };

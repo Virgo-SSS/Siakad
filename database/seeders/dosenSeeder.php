@@ -17,13 +17,13 @@ class dosenSeeder extends Seeder
     {
         dosen::create([
             'nidn' => 'D20221',
-            'nama' => 'Jufri',
+            'name' => 'Jufri',
             'email' => 'jufri@gmail.com',
             'password' => bcrypt('password'),
             'jeniskelamin' => 'Laki-Laki',
             'alamat' => 'Jl. Kebon Kacang',
             'no_hp' => '0812341234',
-            'foto' => 'img/dosen.jpg'
+            'image' => 'img/dosen.jpg'
 
 
         ]);

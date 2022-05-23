@@ -25,12 +25,7 @@
                     <input type="password" name="password" class="form-control" id="inp" required>
                 </div>
             </div>
-            <div class="row mt-3">
-                <div class="col-6">
-                    
-                    <input type="number" value="1" hidden name="role" class="form-control" id="inp" required>
-                </div>
-            </div>
+            
             <button type="submit" class="btn btn-primary mt-3" style="float: right">Submit</button>
         </form>
     </div>

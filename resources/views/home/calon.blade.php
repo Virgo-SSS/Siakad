@@ -1,30 +1,38 @@
-@if(auth('pelajar')->user())
-    @if(auth('pelajar')->user()->isMahasiswa == 0)
+@if(auth('registrasi')->user())
+    @if(auth('registrasi')->user()->isMahasiswa == 0)
     <h3 class="mt-3">Silahkan Isi Formulir Di bawah ini</h3>
-    @if (Session::has('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>{{ Session::get('success') }}</strong>
+        @if (Session::has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{ Session::get('success') }}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+
+    <div class="card" style="background-color: #E9ECEF">
+        <h5 class="mt-3 text-center">Biodata</h5>
+        @if(Session::has('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>{{ Session::get('error') }}</strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
         </div>
-    @endif
-    
-    <div class="card" style="background-color: #E9ECEF">
-        <h5 class="mt-3 text-center">Biodata</h5>
+        @endif
         <div class="card-body">
             <form action="{{ route('formulirpelajar') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-6">
-                        <label for="inp" class="form-label">Name</label>
-                        <input type="text" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" id="inp" aria-describedby="emailHelp" required>
-                        @error('name')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
+                            <label for="inp" class="form-label">Nama sesuai KTP</label>
+                            <input type="text" name="name" value="{{ old('name') }}" class="form-control @error('name') is-invalid @enderror" id="inp" aria-describedby="emailHelp" required>
+                            @error('name')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
                     <div class="col-6">
                         <label for="inp" class="form-label">Jenis Kelamin</label>
                         <select name="jeniskelamin" id="inp" class="form-control" required>
@@ -43,10 +51,11 @@
                         @enderror
                     </div>
                     <div class="col-6 mt-3">
-                        <label for="inp" class="form-label">Prodi</label>
+                        <label for="inp" class="form-label">Kewarganegaraan</label>
                         <select name="prodi" id="inp" class="form-control" required>
-                            <option value="SI">Sistem Informasi</option>
-                            <option value="TI">Teknik Informatika</option>
+                            @foreach($countries as $country)
+                                <option value="{{ $country }}">{{ $country }}</option>
+                            @endforeach
                         </select>
                     
                     </div>
@@ -107,13 +116,7 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="col-6">
-                        <label for="inp" class="form-label">Waktu Kuliah</label>
-                        <select name="waktukuliah" id="inp" class="form-control" required>
-                            <option value="Pagi">Pagi</option>
-                            <option value="Malam">Malam</option>
-                        </select>
-                    </div>
+                   
                 </div>
 
                 <input type="number" hidden readonly name="regis_id" value="{{ Auth::id() }}">
@@ -123,6 +126,14 @@
             </form>
         </div>
     </div>
-    
+   
+        
+    @else
+        
+    Anda telah Melakukan Registrasi, silahkan login menggunakan akun dari kampus
     @endif
+   
+
+    
+    
 @endif

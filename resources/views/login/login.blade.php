@@ -29,6 +29,16 @@
                     <div class="sign-up mt-3">
                         Mau menjadi calon mahasiswa? <a href="{{ route('register') }}">Daftar Akun</a>
                     </div>
+                    <h5 class="mt-3">Follow US</h5>
+                    <div class="footer-social-icons">
+                        <ul class="social-icons">
+                            <li><a href="" class="social-icon aicon"> <i class="fa fa-facebook"></i></a></li>
+                            <li><a href="" class="social-icon aicon"> <i class="fa fa-twitter"></i></a></li>
+                            <li><a href="" class="social-icon aicon"> <i class="fa fa-youtube"></i></a></li>
+                            <li><a href="" class="social-icon aicon"> <i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="" class="social-icon aicon"> <i class="fa fa-github"></i></a></li>
+                        </ul>
+                    </div>
                 </form>
             </div>
         </div>

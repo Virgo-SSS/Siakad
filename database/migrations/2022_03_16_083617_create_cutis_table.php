@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('registrasis', function (Blueprint $table) {
+        Schema::create('cutis', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('confirm_password');
-            $table->boolean('isMahasiswa');
+            $table->bigInteger('id_pembuat');
+            $table->string('kategori');
+            $table->date('tanggal_mulai');
+            $table->date('tanggal_selesai');
+            $table->string('Keterangan');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('registrasis');
+        Schema::dropIfExists('cutis');
     }
 };

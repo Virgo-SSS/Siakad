@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('dosens', function (Blueprint $table) {
             $table->string('nidn')->unique()->primary();
-            $table->string('nama');
+            $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
             $table->string('jeniskelamin')->nullable();
             $table->string('alamat')->nullable();
             $table->string('no_hp');
-            $table->string('foto')->nullable();
+            $table->string('image')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -29,7 +29,7 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
+     *  
      * @return void
      */
     public function down()

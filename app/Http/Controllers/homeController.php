@@ -9,6 +9,8 @@ use App\Models\karyawan;
 use App\Models\aspiration;
 use App\Models\registrasi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Monarobase\CountryList\CountryListFacade;
 
 class homeController extends Controller
 {
@@ -20,9 +22,11 @@ class homeController extends Controller
         $pelajar2 = registrasi::where('isMahasiswa', 0)->count();
         $karyawan = karyawan::count();
 
+        $countries = CountryListFacade::getlist();
 
         $rgs = registrasi::all();
-        return view('home.home', compact('admins', 'dosen',  'karyawan', 'pelajar', 'pelajar2', 'rgs'));
+        $rgss = registrasi::where('id', Auth::id())->first();
+        return view('home.home', compact('admins', 'dosen',  'karyawan', 'pelajar', 'pelajar2', 'rgs', 'rgss', 'countries'));
     }
 
     public function listaspiration()

@@ -39,14 +39,7 @@
                             <strong class="text-danger">{{ $message }}</strong>
                         @enderror
                     </div>
-                    <div class="form-group mt-3">
-                        <label for="inp">Nomor Whatsapp</label>
-                        <input type="number" name="nowa" value="{{ old('nowa') }}" min="0" class="form-control form-control-sm @error('nowa') is-invalid @enderror " id="inp" aria-describedby="emailHelp" required>
-                        @error('nowa')
-                            <strong class="text-danger">{{ $message }}</strong>
-                        @enderror
-                    
-                    </div>
+                   
                     <div class="form-group mt-3">
                         <label for="inp">Password</label>
                         <input type="password" name="password" class="form-control form-control-sm @error('password') is-invalid @enderror" id="inp" required>
@@ -66,7 +59,7 @@
                     <input type="number" name="isMahasiswa" value="0" hidden required>
 
                     <button type="submit" class="btn btn-primary btn-block">Register</button>
-                    <div class="sign-up">
+                    <div class="sign-up mt-3">
                         Already have an account ? <a href="{{ route('login') }}">Login</a>
                     </div>
                 </form>

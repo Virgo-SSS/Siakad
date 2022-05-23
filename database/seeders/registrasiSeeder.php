@@ -6,7 +6,7 @@ use App\Models\registrasi;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class pelajarSeeder extends Seeder
+class registrasiSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,7 +20,6 @@ class pelajarSeeder extends Seeder
             'email' => 'kristina@gmail.com',
             'password' => bcrypt('password'),
             'confirm_password' => bcrypt('password'),
-            'no_wa' => '082180907887',
             'isMahasiswa' => 0
         ]);
     }

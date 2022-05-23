@@ -167,6 +167,8 @@ return [
         /*
          * Package Service Providers...
          */
+        Monarobase\CountryList\CountryListServiceProvider::class,
+        Laravolt\Avatar\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -191,7 +193,8 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // ...
+        'Countries' => Monarobase\CountryList\CountryListFacade::class,
+        'Avatar'    => Laravolt\Avatar\Facade::class,
     ])->toArray(),
 
 ];

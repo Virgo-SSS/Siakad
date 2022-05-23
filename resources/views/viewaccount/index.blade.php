@@ -16,7 +16,7 @@
                 <p>Sistem Informasi</p>
                 <p>2121015</p>
             </div>
-            <strong class="text-center">{{ auth()->user()->Rroles->name }}</strong>
+            {{-- <strong class="text-center">{{ auth()->user()->Rroles->name }}</strong> --}}
             <div class="card-body text-center">
               <br>
               <a href="{{ route('editaccount') }}">

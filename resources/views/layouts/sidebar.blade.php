@@ -46,7 +46,7 @@
     <nav id="sidebar">
         <div class="sidebar-header bg-primary text-center">
             <h3>
-                <img src="{{ asset('img/spiderman.jpg') }}" alt="" width="40px" rounded style="border-radius: 20px">
+                <img src="{{ asset('img/campus_profile.jpg') }}" alt="" width="40px" rounded style="border-radius: 20px">
                 Siakad
             </h3>
         </div>
@@ -58,7 +58,18 @@
                     <i class="fa-solid fa-house"></i> Dashboard
                 </a>
             </li>
-         
+
+            @if(auth('pelajar')->user())
+                @if(auth('pelajar')->user()->isMahasiswa == 0)
+                <li>
+                    <a href="{{ route('datacalon', $rgss->id) }}">
+                        <i class="fa-solid fa-user"></i> Data
+                    </a>
+                </li>
+                @endif
+            @endif
+
+
             @if(auth('web')->user())
             <li>
                 <a href="#inputSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -116,7 +127,7 @@
                 @endif
             @endif
 
-            @if(auth('web')->user() || auth('dosen')->user() || auth('karyawan')->user() || auth('pelajar')->user()->isMahasiswa == 1 )
+            @if(auth('web')->user() || auth('dosen')->user() || auth('karyawan')->user() || auth('pelajar')->user())
             <li>
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <i class="fa-solid fa-paintbrush"></i> Layanan Akademik
@@ -159,7 +170,7 @@
             </li>
             @endif
             
-            @if(auth('dosen')->user() || auth('web')->user() || auth('karyawan')->user() || auth('pelajar')->user()->isMahasiswa == 1)
+            @if(auth('dosen')->user() || auth('web')->user() || auth('karyawan')->user() || auth('pelajar')->user())
             <li>
                 <a href="#">
                     <i class="fa-solid fa-user-pen"></i> Office 365
@@ -189,10 +200,10 @@
                 </li>
             @endif
 
-            @if(auth('dosen')->user() || auth('web')->user() || auth('karyawan')->user() || auth('pelajar')->user()->isMahasiswa == 1)
+            @if(auth('dosen')->user() || auth('web')->user() || auth('karyawan')->user() || auth('pelajar')->user())
 
             <li>
-                <a href="#">
+                <a href="{{ route('cuti') }}">
                     <i class="fa-regular fa-copy"></i> Cuti Request
                 </a>
             </li>
@@ -226,7 +237,7 @@
                 @endif
             @endif
 
-            @if(auth('dosen')->user() || auth('web')->user() ||auth('karyawan')->user() || auth('pelajar')->user()->isMahasiswa == 1)
+            @if(auth('dosen')->user() || auth('web')->user())
             <li > 
                 <a href="#">
                     <i class="fa-solid fa-hand-holding-heart"></i> Academic Guidance
@@ -234,6 +245,15 @@
             </li>
             @endif
 
+            @if(auth('pelajar')->user())
+                @if(auth('pelajar')->user()->isMahasiswa == 1)
+                    <li > 
+                        <a href="#">
+                            <i class="fa-solid fa-hand-holding-heart"></i> Academic Guidance
+                        </a>
+                    </li>
+                @endif
+            @endif
 
             @if(auth('web')->user() || auth('dosen')->user())
             <li>
@@ -360,32 +380,31 @@
                         <div class="dropdown" style="float:right;">
                             <button class="dropbtn">
                                 @if(auth('web')->user())
-                                    <img src="{{ asset('img/profile.jpg') }}" alt="" width="40px" rounded style="border-radius: 50px">
+                                    <img src="{{ Avatar::create(auth()->user()->name)->toBase64() }}" alt="" width="40px" rounded style="border-radius: 50px">
                                 @endif
 
                                 @if(auth('dosen')->user())
                                     @if(auth('dosen')->user()->foto == null)
-                                        <img src="{{ asset('img/profile.jpg') }}" alt="" width="40px" rounded style="border-radius: 50px">
+                                        <img src="{{ Avatar::create(auth()->user()->name)->toBase64() }}" alt="" width="40px" rounded style="border-radius: 50px">
                                     @endif
                                     <img src="{{ asset('storage/'.auth('dosen')->user()->foto) }}" alt="" width="40px" rounded style="border-radius: 50px">
                                 @endif
 
                                 @if(auth('karyawan')->user())
                                     @if(auth('karyawan')->user()->foto == null)
-                                        <img src="{{ asset('img/profile.jpg') }}" alt="" width="40px" rounded style="border-radius: 50px">
+                                        <img src="{{ Avatar::create(auth()->user()->name)->toBase64() }}" alt="" width="40px" rounded style="border-radius: 50px">
                                     @endif
                                     <img src="{{ asset('storage/'.auth('karyawan')->user()->foto) }}" alt="" width="40px" rounded style="border-radius: 50px">
                                 @endif
 
                                 @if(auth('pelajar')->user()) 
-                                    @if(auth('pelajar')->user()->isMahasiswa == 0)
-                                        <img src="{{ asset('img/profile.jpg') }}" alt="" width="40px" rounded style="border-radius: 50px">
-                                    @endif
-                                    @if(auth('pelajar')->user()->isMahasiswa == 1)
-                                        {{-- <img src="{{ asset('storage/'.auth('pelajar')->user()->foto) }}" alt="" width="40px" rounded style="border-radius: 50px"> --}}
-                                        <img src="{{ asset('img/spiderman.jpg') }}" alt="" width="40px" rounded style="border-radius: 50px">
-                                    @endif
+                                    <img src="{{ asset('storage/'.auth('pelajar')->user()->foto) }}" alt="" width="40px" rounded style="border-radius: 50px">
+                                
                                 @endif
+
+                                @if(auth('registrasi')->user())
+                                        <img src="{{ Avatar::create(auth()->user()->name)->toBase64() }}" alt="" width="40px" rounded style="border-radius: 50px">
+                                    @endif
                             </button>
 
 
@@ -398,12 +417,10 @@
                                 </a>
                                 
                                 @if(auth('pelajar')->user())
-                                    @if(auth('pelajar')->user()->isMahasiswa == 1)
+                                    
                                     <a href="{{ route('viewaccount') }}">
                                         <i class="fa-solid fa-circle-user"></i> View Account
                                     </a>
-                                    @endif
-                                    
                                 @endif
 
                                 @if(auth('dosen')->user() || auth('web')->user() || auth('karyawan')->user())
