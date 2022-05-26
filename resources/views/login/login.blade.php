@@ -2,9 +2,24 @@
 
 @section('login_content')
 <div class="global-container">
+
+    <div class="dropdown-content">
+        {{-- MAU DI JADIKAN DROPDOWN --}}
+  
+        <select onchange="changeLanguage(this.value)" >
+            <img src="https://img.icons8.com/color/48/000000/indonesia-circular.png" width="20px"/>
+            <option {{session()->has('lang_code')?(session()->get('lang_code')=='en'?'selected':''):''}} value="en">English</option>
+            <img src="https://img.icons8.com/color/48/000000/usa-circular.png" width="20px"/>
+            <option {{session()->has('lang_code')?(session()->get('lang_code')=='id'?'selected':''):''}} value="id">Indonesia/option>
+          
+        </select>
+
+    </div>
+
 	<div class="card login-form" style="border-radius: 10px; box-shadow:0px 6px 12px">
         <div class="card-body">
             <h3 class="card-title text-center">Welcome To Siakad</h3>
+            
             <div class="card-text">
                 <form action="{{ route('loginsubmit') }}" method="POST" id="login_form">
                     @csrf
@@ -15,7 +30,7 @@
                     </div>
 
                     <div class="form-group mt-3">
-                        <label for="password">Password</label>
+                        <label for="password">{{ __('home.password') }}</label>
                         <input type="password" name="password" class="form-control form-control-sm" id="password">
                         <a href="#" style="float:right;font-size:15px; margin-bottom:10px">Forgot password?</a>
                         <span id="password_error" style="color:red"></span>

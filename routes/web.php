@@ -1,15 +1,16 @@
 <?php
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\cutiController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\logincontroller;
+use App\Http\Controllers\registerController;
 use App\Http\Controllers\admin\adminController;
 use App\Http\Controllers\dosen\dosenController;
 use App\Http\Controllers\pelajar\pelajarController;
 use App\Http\Controllers\karyawan\karyawanController;
 use App\Http\Controllers\pelajar\registrasiController;
-use App\Http\Controllers\registerController;
 use App\Http\Controllers\viewaccount\viewaccountController;
 
 
@@ -51,6 +52,11 @@ Route::group(['middleware' => 'auth:web'], function() {
     // Route::post('/storecuti', [cutiController::class,'store'])->name('storecuti');
 });
 
+Route::get('/language', function($langcode){
+    App::setLocale($langcode);
+    session()->put("lang_code",$langcode);
+    return redirect()->back();
+})->name('language');
 
 // Route::group(['middleware' => 'auth:web'], function() {
 

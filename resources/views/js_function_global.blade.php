@@ -14,3 +14,11 @@
         })
     }
 </script>
+
+<script type="text/javascript">
+  
+    function changeLanguage(lang){
+        window.location='{{ route("language") }}/'+lang;
+    }
+  
+</script>
