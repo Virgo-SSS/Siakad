@@ -19,22 +19,22 @@ return [
         'guard' => 'web',
         'passwords' => 'users',
     ],
-    'dosens' => [
-        'guard' => 'dosen',
-        'model' => App\Models\dosen::class,
-    ],
-    'registrasis' => [
-        'guard' => 'registrasi',
-        'model' => App\Models\registrasi::class,
-    ],
-    'karyawans' => [
-        'guard' => 'karyawan',
-        'model' => App\Models\karyawan::class,
-    ],
-    'pelajars' => [
-        'guard' => 'pelajar',
-        'model' => App\Models\pelajar::class,
-    ],
+    // 'dosens' => [
+    //     'guard' => 'dosen',
+    //     'model' => App\Models\dosen::class,
+    // ],
+    // 'registrasis' => [
+    //     'guard' => 'registrasi',
+    //     'model' => App\Models\registrasi::class,
+    // ],
+    // 'karyawans' => [
+    //     'guard' => 'karyawan',
+    //     'model' => App\Models\karyawan::class,
+    // ],
+    // 'pelajars' => [
+    //     'guard' => 'pelajar',
+    //     'model' => App\Models\pelajar::class,
+    // ],
 
     /*
     |--------------------------------------------------------------------------
@@ -58,22 +58,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'dosen' => [
-            'driver' => 'session',
-            'provider' => 'dosens',
-        ],
-        'pelajar' => [
-            'driver' => 'session',
-            'provider' => 'pelajars',
-        ],
-        'karyawan' => [
-            'driver' => 'session',
-            'provider' => 'karyawans',
-        ],
-        'registrasi' => [
-            'driver' => 'session',
-            'provider' => 'registrasis',
-        ],
+        // 'registrasi' => [
+        //     'driver' => 'session',
+        //     'provider' => 'registrasis',
+        // ],
         
     ],
 
@@ -99,22 +87,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        'dosens' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\dosen::class,
-        ],
-        'pelajars' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\pelajar::class,
-        ],
-        'karyawans' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\karyawan::class,
-        ],
-        'registrasis' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\registrasi::class,
-        ],
+        // 'registrasis' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\registrasi::class,
+        // ],
 
         // 'users' => [
         //     'driver' => 'database',

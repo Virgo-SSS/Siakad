@@ -18,15 +18,11 @@ class homeController extends Controller
     {
         $admins = User::count();
         $dosen = dosen::count();
-        $pelajar = registrasi::where('isMahasiswa', 1)->count();
-        $pelajar2 = registrasi::where('isMahasiswa', 0)->count();
-        $karyawan = karyawan::count();
 
         $countries = CountryListFacade::getlist();
 
-        $rgs = registrasi::all();
-        $rgss = registrasi::where('id', Auth::id())->first();
-        return view('home.home', compact('admins', 'dosen',  'karyawan', 'pelajar', 'pelajar2', 'rgs', 'rgss', 'countries'));
+        
+        return view('home.home', compact('admins', 'dosen', 'countries'));
     }
 
     public function listaspiration()

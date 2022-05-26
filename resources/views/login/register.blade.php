@@ -1,6 +1,6 @@
-@extends('layouts.loginmain')
+@extends('login.login_main')
 
-@section('content')
+@section('login_content')
 <div class="global-container">
     <div class="card login-form">
         @if (Session::has('error'))
