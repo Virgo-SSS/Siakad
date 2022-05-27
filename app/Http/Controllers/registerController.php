@@ -31,4 +31,6 @@ class registerController extends Controller
 
         return redirect()->route('home');
     }
+
+    // protected function();
 }

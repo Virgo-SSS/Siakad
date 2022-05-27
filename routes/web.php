@@ -52,11 +52,8 @@ Route::group(['middleware' => 'auth:web'], function() {
     // Route::post('/storecuti', [cutiController::class,'store'])->name('storecuti');
 });
 
-Route::get('/language', function($langcode){
-    App::setLocale($langcode);
-    session()->put("lang_code",$langcode);
-    return redirect()->back();
-})->name('language');
+
+
 
 // Route::group(['middleware' => 'auth:web'], function() {
 
@@ -92,6 +89,11 @@ Route::get('/language', function($langcode){
 //     Route::get('/filter', [homeController::class, 'filteraspi'])->name('filter');
 // });
 
+// ROUTE TO CHANGE LANGUAGE
+Route::get('/language/{langcode}', function($langcode){
+    session()->put('lang_code', $langcode);
+    return redirect()->back();
+})->name('language');
 
 // LOGIN ROUTE
 // Route::get('/login', [logincontroller::class, 'index'])->name('login')->middleware('guest:web');

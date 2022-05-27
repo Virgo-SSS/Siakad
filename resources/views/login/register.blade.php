@@ -23,44 +23,36 @@
             <h3 class="card-title text-center">Registrasi</h3>
             <div class="card-text">
                 
-                <form action="{{ route('registersubmit') }}" method="POST">
+                <form action="{{ route('registersubmit') }}" method="POST" id="register_form">
                     @csrf
                     <div class="form-group">
-                        <label for="inp">Name Sesuai KTP/Nama Lengkap</label>
-                        <input type="text" name="name"  value="{{ old('name') }}" class="form-control form-control-sm @error('name') is-invalid @enderror" id="inp" aria-describedby="emailHelp" required>
-                        @error('name')
-                            <strong class="text-danger">{{ $message }}</strong>
-                        @enderror
+                        <label for="inp">{{ __('lang.name_ktp') }}</label>
+                        <input type="text" name="name" onblur="validate_name(this.value)"  class="form-control form-control-sm @error('name') is-invalid @enderror" id="inp" aria-describedby="emailHelp" required>
+                        <span style="color:red" id="name_error"></span>
                     </div>
                     <div class="form-group mt-3">
-                        <label for="inp">Email address</label>
-                        <input type="email" name="email" value="{{ old('email') }}" class="form-control form-control-sm @error('email') is-invalid @enderror" id="inp" aria-describedby="emailHelp" required>
-                        @error('email')
-                            <strong class="text-danger">{{ $message }}</strong>
-                        @enderror
+                        <label for="inp">Email</label>
+                        <input type="email" name="email" onblur="validate_email(this.value)" class="form-control form-control-sm @error('email') is-invalid @enderror" id="inp" aria-describedby="emailHelp" required>
+                        <span style="color:red" id="email_error"></span>
                     </div>
                    
                     <div class="form-group mt-3">
-                        <label for="inp">Password</label>
-                        <input type="password" name="password" class="form-control form-control-sm @error('password') is-invalid @enderror" id="inp" required>
-                        @error('password')
-                            <strong class="text-danger">{{ $message }}</strong>
-                        @enderror
+                        <label for="inp">{{ __('lang.password') }}</label>
+                        <input type="password" name="password" onblur="validate_password(this.value)" class="form-control form-control-sm @error('password') is-invalid @enderror" id="inp" required>
+                        <span style="color:red" id="password_error"></span>
                     
                     </div>
                     <div class="form-group mt-3">
-                        <label for="inp">Confirm Password</label>
-                        <input type="password" name="confirm_password" class="form-control form-control-sm @error('confirm_password') is-invalid @enderror" id="inp" required>
-                        @error('confirm_password')
-                            <strong class="text-danger">{{ $message }}</strong>
-                        @enderror
-                   
+                        <label for="inp">{{ __('lang.confirm_password') }}</label>
+                        <input type="password" name="confirm_password" onblur="validate_confirm_password(this.value)" class="form-control form-control-sm @error('confirm_password') is-invalid @enderror" id="inp" required>
+                        <span style="color:red" id="c_password_error"></span>
                     </div>
                     <input type="number" name="isMahasiswa" value="0" hidden required>
 
-                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    <button type="submit" class="btn btn-primary btn-block">{{ __('lang.register') }}</button>
+                    <div id="loader_register"></div>
                     <div class="sign-up mt-3">
-                        Already have an account ? <a href="{{ route('login') }}">Login</a>
+                        {{ __('lang.already_have_an_account_?') }}<a href="{{ route('login') }}">{{ __('lang.login') }}</a>
                     </div>
                 </form>
             </div>

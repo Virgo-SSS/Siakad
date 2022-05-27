@@ -11,6 +11,7 @@
 
 <script>
     $(document).ready(function() {
+        // LOGIN
         form('login_form','loader_login',function(r){
             if(r.status == 400){
                 if(r.message){
@@ -48,5 +49,25 @@
                 console.log('berhasil')
             }
         });
-    } );
+
+
+        // REGISTER
+        form('register_form','loader_register', function(r){
+            // 
+        });
+    });
+</script>
+
+<script>
+    function validate_name(name) {
+        let str = name;
+        if(str == ''){
+            $('#name_error').html('Nama tidak boleh kosong');
+
+        }else{
+            $('#name_error').html('');
+        }
+        
+    }
+    
 </script>
