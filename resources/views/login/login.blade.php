@@ -18,7 +18,7 @@
 
 	<div class="card login-form" style="border-radius: 10px; box-shadow:0px 6px 12px">
         <div class="card-body">
-            <h3 class="card-title text-center">Welcome To Siakad</h3>
+            <h3 class="card-title text-center">{{ __('lang.welcome_to_siakad') }}</h3>
             
             <div class="card-text">
                 <form action="{{ route('loginsubmit') }}" method="POST" id="login_form">
@@ -30,13 +30,13 @@
                     </div>
 
                     <div class="form-group mt-3">
-                        <label for="password">{{ __('home.password') }}</label>
+                        <label for="password">{{ __('lang.password') }}</label>
                         <input type="password" name="password" class="form-control form-control-sm" id="password">
-                        <a href="#" style="float:right;font-size:15px; margin-bottom:10px">Forgot password?</a>
+                        <a href="#" style="float:right;font-size:15px; margin-bottom:10px">{{ __('lang.forgot_password?') }}</a>
                         <span id="password_error" style="color:red"></span>
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-block" id="btnSubmit">Login</button>
+                    <button type="submit" class="btn btn-primary btn-block" id="btnSubmit">{{ __('lang.login') }}</button>
                     <div id="loader_login" style="text-align:center;font-size:20px"></div>
 
                     <div class="sign-up mt-3">
