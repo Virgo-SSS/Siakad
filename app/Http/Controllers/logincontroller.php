@@ -10,7 +10,7 @@ class logincontroller extends Controller
 {
     public function index()
     {
-        return view('login.login');
+        return view('login.index');
     }
 
     // LOGIN 
