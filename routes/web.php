@@ -2,16 +2,13 @@
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\cutiController;
+
+
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\logincontroller;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\registerController;
-use App\Http\Controllers\admin\adminController;
-use App\Http\Controllers\dosen\dosenController;
-use App\Http\Controllers\pelajar\pelajarController;
-use App\Http\Controllers\karyawan\karyawanController;
-use App\Http\Controllers\pelajar\registrasiController;
-use App\Http\Controllers\viewaccount\viewaccountController;
+use App\Http\Controllers\AspirationController;
 
 
 
@@ -34,18 +31,15 @@ use App\Http\Controllers\viewaccount\viewaccountController;
 // registrasi = calon pelajar
 
 // ROUTE FOR ALL guard
-Route::group(['middleware' => 'auth:web,calon'], function() {
+Route::group(['middleware' => 'auth:web'], function() {
     Route::get('/', [homeController::class, 'index'])->name('home');
     Route::get('/home', [homeController::class, 'index'])->name('home');  
 
-    // Route::get('/aspiration', [homeController::class, 'aspiration'])->name('aspiration');  
-    // Route::post('/submitaspiration', [homeController::class, 'submitaspiration'])->name('submitaspiration');  
+    Route::get('/profile', [ProfileController::class,'index'])->name('profile');
+    
 
-
-    // //  VIEW ACCOUNT
-    // Route::get('/account', [viewaccountController::class, 'index'])->name('viewaccount');
-    // Route::get('/editaccount', [viewaccountController::class, 'create'])->name('editaccount');
-
+    Route::get('/aspiration', [AspirationController::class, 'index'])->name('aspiration');  
+    Route::post('/aspiration', [AspirationController::class, 'store'])->name('aspiration.store');
     // // Cute Request 
     // Route::get('/cuti', [cutiController::class, 'index'])->name('cuti');
     // Route::get('/formcuti', [cutiController::class,'create'])->name('formcuti');
@@ -98,7 +92,7 @@ Route::get('/language/{langcode}', function($langcode){
 // LOGIN ROUTE
 // Route::get('/login', [logincontroller::class, 'index'])->name('login')->middleware('guest:web');
 
-Route::group(['middleware' => 'guest:web,calon'], function() {
+Route::group(['middleware' => 'guest:web'], function() {
     Route::get('/login', [logincontroller::class, 'index'])->name('login');
     Route::post('/login', [logincontroller::class, 'login'])->name('loginsubmit');
     

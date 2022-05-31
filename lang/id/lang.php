@@ -5,7 +5,7 @@ return [
     "forgot_password?"              => "Lupa Kata Sandi?",
     "login"                         => "Masuk",
     "welcome_to_siakad"             => "Selamat Datang di SIAKAD",
-    "want_to_be_a_student?"         => "Mau menjadi calon mahasiswa?",
+    "want_to_be_a_student?"         => "Mau menjadi calon mahasiswa ?",
     "register"                      => "Daftar",
     "already_have_an_account_?"     => "Sudah punya akun ?",
     "name_ktp"                      => "Name Sesuai KTP/Nama Lengkap",
@@ -13,6 +13,16 @@ return [
     "information"                   => "INFORMASI",
     "email_active"                  => "Email Anda Sudah Active Silahkan Login Menggunakan Akun Mahasiswa",
     "keep_learning"                 => "Tetap Semangat Belajar",
+    "aspiration"                    => "Aspirasi",
+    "category"                      => "Kategori",
+    "title"                         => "Judul",
+    "description"                   => "Deskripsi",
+    "complaint"                     => "Keluhan",
+    "suggestion"                    => "Saran",
+    "other"                         => "Lainnya",
+    "submit"                        => "Kirim",
+    "thank_you_aspiration"          => "Terima Kasih Telah Mengirim Masukan Anda",
+
    
 
     // VALIDATION
@@ -26,5 +36,9 @@ return [
     "email_already_registered"      => "Email sudah terdaftar",
     "email_not_found"               => "Email tidak ditemukan",
     "pass_wrong"                    => "Email Atau Password Salah",
+    "submit_only_3_times"           => "Anda hanya dapat mengirim 3 kali sehari",
+    "title_required"                => "Judul tidak boleh kosong",
+    "description_required"          => "Deskripsi tidak boleh kosong",
+    "category_required"             => "Kategori tidak boleh kosong",
 ]
 ?>

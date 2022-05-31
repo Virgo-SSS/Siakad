@@ -114,9 +114,8 @@
         </li>
 
         <li >
-            {{-- <a href="{{ route('aspiration') }}"> --}}
-            <a href="#">
-                <i class="fa-solid fa-fire-flame-simple"></i> Aspiration
+            <a href="{{ route('aspiration') }}">
+                <i class="fa-solid fa-fire-flame-simple"></i> {{ __('lang.aspiration') }}
             </a>
         </li>
       

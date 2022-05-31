@@ -21,6 +21,10 @@
             $('#uiModal').modal('hide');
         }, 2000);
     }
+
+    function closeElement(id){
+        $('#'+id).hide();
+    }
     
 
 </script>

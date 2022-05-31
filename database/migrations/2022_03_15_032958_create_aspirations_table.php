@@ -15,9 +15,12 @@ return new class extends Migration
     {
         Schema::create('aspirations', function (Blueprint $table) {
             $table->id();
-            $table->string('category');
-            $table->string('Title');
+            $table->enum('category', ['complaint', 'suggestion', 'other']);
+            $table->string('title');
             $table->text('description');
+            $table->unsignedBigInteger('created_by');
+            $table->tinyInteger('status');
+            $table->foreign('created_by')->references('id')->on('users');
             $table->timestamps();
         });
     }

@@ -10,23 +10,23 @@
             <ul class="nav navbar-nav">
                 <div class="dropdown" style="float:right;">
                     <button class="dropbtn">
-                        
-                        {{-- <img src="#" alt="" width="40px" rounded style="border-radius: 50px"> --}}
-                        <img src="{{ Avatar::create('test')->toBase64() }}" alt="" width="40px" rounded style="border-radius: 50px">
+                        <img src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" alt="" width="40px" rounded style="border-radius: 50px">
                     </button>
                     <div class="dropdown-content">
-                        <a href="#">
-                            <img src="https://img.icons8.com/color/48/000000/indonesia-circular.png" width="20px"/> Indonesia
+                        @if(config('app.locale') == 'en')
+                            <a href="{{ route('language', 'id') }}">
+                                <img src="https://img.icons8.com/color/48/000000/indonesia-circular.png" width="20px"/> Indonesia
+                            </a>
+                        @else
+                            <a href="{{ route('language', 'en') }}">
+                                <img src="https://img.icons8.com/color/48/000000/usa-circular.png" width="20px"/> English
+                            </a>
+                        @endif
+                        <a href="{{ route('profile') }}">
+                            <i class="fa-solid fa-circle-user"></i> Profile
                         </a>
-                        <a href="#">
-                            <img src="https://img.icons8.com/color/48/000000/usa-circular.png" width="20px"/> English
-                        </a>
-                        <a href="#">
-                            <i class="fa-solid fa-circle-user"></i> View Account
-                        </a>
-                    
                         <a href="{{ route('logout') }}">
-                            <i class="fa-solid fa-power-off"></i> Log out
+                            <i class="fa-solid fa-power-off"></i> {{ __("lang.logout") }}
                         </a>
                     </div>
                 </div>

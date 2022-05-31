@@ -1,78 +1,41 @@
-@extends('layouts.sidebar')
+@extends('layouts.main')
 
 @section('content')
 
-@if (Session::has('success'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>{{ Session::get('success') }}</strong>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<h3>{{ __('lang.aspiration') }}</h3>
+<div id="aspirationAlerts" role="alert" style="display: none;" class="alert alert-success alert-dismissible fade show">
+    <strong id="aspirationAlertsContent"></strong> 
+    <button type="button" class="close" onclick="closeElement('aspirationAlerts')" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
 </div>
-@endif
 
+<div class="card" style="background-color: #E9ECEF">
+    <div class="card-body">
+        <form action="{{ route('aspiration.store') }}" method="post" id="aspirationForm">
+            @csrf
+            <label for="categories">{{ __('lang.category') }}</label>
+            <select name="category" id="categories" class="form-control">
+                <option value="complaint">{{ __('lang.complaint') }}</option>
+                <option value="suggestion">{{ __('lang.suggestion') }}</option>
+                <option value="other">{{ __('lang.other') }}</option>
+            </select>
+            <span style="color:red" id="category"></span>
 
-<h3 class="text-center">Aspiration</h3>
+            <label for="titles" class="mt-3">{{ __('lang.title') }}</label>
+            <input type="text" name="title" id="titles" onblur="validate_title(this.value)" class="form-control">
+            {{-- <input type="text" name="title" id="titles"  class="form-control"> --}}
+            <span style="color:red" id="title"></span>
 
-<div class="container mt-4">
-    
-    <form action="{{ route('filter') }}" method="GET">
-        @csrf
-        <div class="form-group">
-        <div class="row">
-            <div class="col-md-2" >
-                <select class="form-control" id="inp" name="category">
-                    <option selected disabled>Filter</option>
-                    <option value="Complaint">Complaint</option>
-                    <option value="Suggestion">Suggestion</option>
-                    <option value="Other">Other</option>
-                </select>
-            </div>
-            <div>
-                <button type="submit" class="btn btn-outline-primary">Filter</button>
-            </div>
-        </div>
-        </div>
-    </form>
-
-
-    
-    <table id="admintable" class="table table-striped display" style="width:100%">
-        <thead>
-            <tr>
-                <th>Category</th>
-                <th>Tittle</th>
-                <th>Description</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($cp as $c)
-            <tr>
-                <td>{{ $c->category }}</td>
-                <td>{{ $c->Title }}</td>
-                <td>{{ $c->description }}</td>
-                <td>
-                    <a href="{{ route('deletedosen', $c->id) }}" class="btn btn-danger">Delete</a>           
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    
-    </table>
-    
-    
-    
-    
+            <label for="descriptions" class="mt-3">{{ __('lang.description') }}</label>
+            <textarea name="description" id="descriptions" onblur="validate_description(this.value)" cols="30" rows="10" class="form-control"></textarea>
+            {{-- <textarea name="description" id="descriptions" cols="30" rows="10" class="form-control"></textarea> --}}
+            <span style="color:red" id="description"></span>
+            
+            <button type="submit" class="btn btn-primary mt-3" style="float: right">{{ __('lang.submit') }}</button>
+            <div id="aspirationLoader"></div>
+        </form>
+    </div>
 </div>
 
-<script>
-$(document).ready( function () {
-    $('#admintable').DataTable({
-        searching: false,
-        responsive: true,
-    });
-    
-} );
-</script>
 @endsection

@@ -22,3 +22,67 @@
 
 @include('js_function_global')
 
+
+
+<script>
+    
+    form('aspirationForm', 'aspirationLoader', function(r){
+        if(r.status == 200){
+            $('#aspirationAlertsContent').html(r.message);
+            $('#aspirationAlerts').removeClass('alert-danger').addClass('alert-success');
+            $('#aspirationAlerts').css('display', 'block');
+            $('#aspirationAlerts').show().delay(8000).fadeOut();
+        }
+        if(r.status == 400){
+            if(r.message){
+                $.each(r.message, function(key, value){
+                    $('#'+key).html(value);
+                });
+                
+                let msg = JSON.stringify(r.message);
+                let msg_arr = JSON.parse(msg);
+                for(let i in msg_arr){
+                    if(i == 'aspiration'){
+                        $('#aspirationAlertsContent').html(msg_arr[i]);
+                        $('#aspirationAlerts').removeClass('alert-success').addClass('alert-danger');
+                        $('#aspirationAlerts').css('display', 'block');
+                        $('#aspirationAlerts').show().delay(8000).fadeOut();
+                    }
+                }
+            }
+            
+        }
+    });
+</script>
+
+<script>
+    function validate_title(str){
+        let str2 = str;
+        if(str2 == ''){
+            $(`#title`).html('{{ __("lang.title_required") }}');
+        }else{
+            $(`#title`).html('');
+        }
+    }
+
+    function validate_description(str){
+        let str2 = str;
+        if(str2 == ''){
+            $(`#description`).html('{{ __("lang.description_required") }}');
+        }else{
+            $(`#description`).html('');
+        }
+    }
+
+</script>
+
+<script>
+    $(document).ready( function () {
+        $('#admintable').DataTable({
+            searching: false,
+            responsive: true,
+        });
+        
+    } );
+</script>
+
