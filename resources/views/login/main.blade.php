@@ -23,7 +23,7 @@
 </head>
 <body>
     @yield('login_content')
-
+@include('modal_global')
 @include('login.js_function')
 </body>
 </html>

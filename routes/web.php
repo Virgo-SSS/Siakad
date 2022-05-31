@@ -34,7 +34,7 @@ use App\Http\Controllers\viewaccount\viewaccountController;
 // registrasi = calon pelajar
 
 // ROUTE FOR ALL guard
-Route::group(['middleware' => 'auth:web'], function() {
+Route::group(['middleware' => 'auth:web,calon'], function() {
     Route::get('/', [homeController::class, 'index'])->name('home');
     Route::get('/home', [homeController::class, 'index'])->name('home');  
 
@@ -97,12 +97,15 @@ Route::get('/language/{langcode}', function($langcode){
 
 // LOGIN ROUTE
 // Route::get('/login', [logincontroller::class, 'index'])->name('login')->middleware('guest:web');
-Route::get('/login', [logincontroller::class, 'index'])->name('login');
-Route::post('/loginsubmit', [logincontroller::class, 'login'])->name('loginsubmit');
 
-
-Route::get('/register',[registerController::class, 'index'])->name('register');
-Route::post('/registersubmit',[registerController::class, 'register'])->name('registersubmit');
+Route::group(['middleware' => 'guest:web,calon'], function() {
+    Route::get('/login', [logincontroller::class, 'index'])->name('login');
+    Route::post('/login', [logincontroller::class, 'login'])->name('loginsubmit');
+    
+    
+    Route::get('/register',[registerController::class, 'index'])->name('register');
+    Route::post('/register',[registerController::class, 'register'])->name('registersubmit');
+});
 
 // Logout Route
 Route::get('/logout', [loginController::class, 'logout'])->name('logout');

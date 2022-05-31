@@ -16,13 +16,19 @@ class homeController extends Controller
 {
     public function index()
     {
-        $admins = User::count();
-        $dosen = dosen::count();
-
         $countries = CountryListFacade::getlist();
+        if(Auth::check()){
+            $user = User::where('id', Auth::user()->id)->first();
 
+            if($user->isMahasiswa == 0 && $user->isActive == 0)
+                return view('home.not_student', compact('countries'));
+            if($user->isMahasiswa == 0 && $user->isActive == 1)
+                return view('home.not_student', compact('countries'));
+
+
+            return view('home.student', compact('countries'));
+        }
         
-        return view('home.home', compact('admins', 'dosen', 'countries'));
     }
 
     public function listaspiration()

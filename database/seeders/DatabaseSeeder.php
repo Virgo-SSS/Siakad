@@ -18,13 +18,22 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Virgo Stevanus',
-            'email' => 'virgo@gmail.com',
-            'password' => bcrypt('virgo')
+            'nim' => 'GAS123',
+            'name' => 'vir1',
+            'email' => 'vir@gmail.com',
+            'password' => bcrypt('Abc12345'),
+            'isActive' => 1,
+            'isMahasiswa' => 1,
         ]);
 
-        $this->call(dosenSeeder::class);
-        $this->call(registrasiSeeder::class);
-        $this->call(karyawanSeeder::class);
+        User::create([
+        
+            'name' => 'test1',
+            'email' => 'test1@gmail.com',
+            'password' => bcrypt('Abc12345'),
+            'isActive' => 0,
+            'isMahasiswa' => 0,
+        ]);
+
     }
 }

@@ -22,21 +22,27 @@
 </head>
 <body>
 <div class="wrapper">
+    @if(auth()->check())
+        @if(auth('web')->user()->isMahasiswa == 0)   
+            @include('layouts.not_std_sidebar')
+        @else
+            @include('layouts.sidebar') 
+        @endif
+    @endif
     
-    @include('layouts.sidebar') 
     <div class="content">
         @include('layouts.navbar')
 
         {{-- CONTENT --}}
         <div class="content">
             @yield('content')
-            
         </div>
         {{-- END CONTENT --}}
     </div>
-    
-   
 </div>
+
+{{-- modal --}}
+@include('modal_global')
 
 {{-- JS --}}
 @include('layouts.js_function')

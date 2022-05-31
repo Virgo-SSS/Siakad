@@ -13,19 +13,25 @@
     $(document).ready(function() {
         // LOGIN
         form('login_form','loader_login',function(r){
+            if(r.status == 200){
+                uiModal(r.message);
+                window.location.href = "{{ route('home') }}";
+            }
+            if(r.status == 401){
+                uiModal(r.message);
+            }
+           
             if(r.status == 400){
                 if(r.message){
                     var msg = JSON.stringify(r.message);
                     var msg = JSON.parse(msg);
                     if(msg.empty_email){
                         $('#email_error').html(msg.empty_email);
-                    }else{
-                        $('#email_error').html('');
-                    }
-
-                    if(msg.invalid_email){
+                    }else if(msg.invalid_email){
                         $('#email_error').html(msg.invalid_email);
-                    }else{
+                    }else if(msg.email_not_found){
+                        $('#email_error').html(msg.email_not_found);
+                    }else {
                         $('#email_error').html('');
                     }
 
@@ -37,23 +43,35 @@
                     
                     if(msg.invalid_password){
                         $('#password_error').html(msg.invalid_password);
+
                     }else{
                         $('#password_error').html('');
                     }
-
                 }
-              
             }
            
-            if(r.status==200){
-                console.log('berhasil')
-            }
         });
 
 
         // REGISTER
         form('register_form','loader_register', function(r){
-            // 
+            if(r.status == 200){
+                uiModal(r.message);
+                location.href = "{{ route('login') }}";
+            }
+            
+            if(r.status == 400){
+                if(r.message){
+                    var msg = JSON.stringify(r.message);
+                    var msg = JSON.parse(msg);
+                    if(msg.email_registered){
+                        $('#email_error').html(msg.email_registered);
+                    }else {
+                        $('#email_error').html('');
+                    }
+                }
+            }
+            
         });
     });
 </script>
@@ -62,12 +80,10 @@
     function validate_name(name) {
         let str = name;
         if(str == ''){
-            $('#name_error').html('Nama tidak boleh kosong');
-
+            $('#name_error').html('{{ __("lang.empty_name") }}');
         }else{
             $('#name_error').html('');
-        }
-        
+        } 
     }
     
 </script>

@@ -1,5 +1,4 @@
-
- <nav id="sidebar">
+<nav id="sidebar">
     <div class="sidebar-header bg-primary text-center">
         <h3>
             <img src="{{ asset('img/campus_profile.jpg') }}" alt="" width="40px" rounded style="border-radius: 20px">
@@ -69,7 +68,8 @@
         </li>
      
         <li>
-            <a href="{{ route('cuti') }}">
+            {{-- <a href="{{ route('cuti') }}"> --}}
+            <a href="#">
                 <i class="fa-regular fa-copy"></i> Cuti Request
             </a>
         </li>
@@ -114,7 +114,8 @@
         </li>
 
         <li >
-            <a href="{{ route('aspiration') }}">
+            {{-- <a href="{{ route('aspiration') }}"> --}}
+            <a href="#">
                 <i class="fa-solid fa-fire-flame-simple"></i> Aspiration
             </a>
         </li>

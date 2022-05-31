@@ -19,10 +19,10 @@ return [
         'guard' => 'web',
         'passwords' => 'users',
     ],
-    // 'dosens' => [
-    //     'guard' => 'dosen',
-    //     'model' => App\Models\dosen::class,
-    // ],
+    'calon' => [
+        'guard' => 'calon',
+        'model' => App\Models\calon_pelajar::class,
+    ],
     // 'registrasis' => [
     //     'guard' => 'registrasi',
     //     'model' => App\Models\registrasi::class,
@@ -58,10 +58,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        // 'registrasi' => [
-        //     'driver' => 'session',
-        //     'provider' => 'registrasis',
-        // ],
+        'calon' => [
+            'driver' => 'session',
+            'provider' => 'calons',
+        ],
         
     ],
 
@@ -87,10 +87,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        // 'registrasis' => [
-        //     'driver' => 'eloquent',
-        //     'model' => App\Models\registrasi::class,
-        // ],
+        'calons' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\calon_pelajar::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',

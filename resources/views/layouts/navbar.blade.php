@@ -21,7 +21,7 @@
                         <a href="#">
                             <img src="https://img.icons8.com/color/48/000000/usa-circular.png" width="20px"/> English
                         </a>
-                        <a href="{{ route('viewaccount') }}">
+                        <a href="#">
                             <i class="fa-solid fa-circle-user"></i> View Account
                         </a>
                     
