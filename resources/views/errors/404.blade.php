@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Siakad | Page Not Found</title>
-    <link rel="stylesheet" href="{{ asset('/css/errors/404.css') }}">
+    <link rel="stylesheet" href="{{ updateVersion('/css/errors/404.css') }}">
 </head>
 
 <body class="antialiased">

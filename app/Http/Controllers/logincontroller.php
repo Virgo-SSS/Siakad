@@ -64,7 +64,7 @@ class logincontroller extends Controller
         
         if(!$checkUser) $message['email_not_found'] = trans('lang.email_not_found');
        
-        if($checkUser) { // Mahasiswa
+        if($checkUser) { 
             $checkPassword = Hash::check($data['password'], $checkUser->password);
             
             if(!$checkPassword) return 401;

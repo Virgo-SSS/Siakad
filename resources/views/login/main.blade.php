@@ -9,12 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"/>
     
-    {{-- <script src="https://kit.fontawesome.com/9fd8223cdb.js" ></script> --}}
-    
-    <link rel="stylesheet" href="{{ asset('css/iconsosmed.css') }}">
+    {{-- CSS --}}
+    <link rel="stylesheet" href="{{ updateVersion('css/iconsosmed.css') }}">
+    <link rel="stylesheet" href="{{ updateVersion('css/login.css') }}">
     
     {{-- CSS LOGIN AND BOOSTRAP --}}
-    <link rel="stylesheet" href="css/login.css?v=0.5">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     
  
@@ -23,6 +22,7 @@
 </head>
 <body>
     @yield('login_content')
+
 @include('modal_global')
 @include('login.js_function')
 </body>

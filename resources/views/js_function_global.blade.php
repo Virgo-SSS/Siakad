@@ -21,10 +21,7 @@
             $('#uiModal').modal('hide');
         }, 2000);
     }
-    function regModal(msg){
-        $('#registermodalContent').html(msg);
-        $('#registerModal').modal('show');
-    }
+    
 
 </script>
 

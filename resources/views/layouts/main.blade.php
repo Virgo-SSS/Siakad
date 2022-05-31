@@ -7,9 +7,9 @@
     <title>Home | Siakad</title>
 
     {{-- CSS --}}
-    <link rel="stylesheet" href="{{ asset('css/sidebar.css?v=1.0') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css?v=0.3') }}">
-    <link rel="stylesheet" href="{{ asset('css/cardhome.css?v=0.4') }}">
+    <link rel="stylesheet" href="{{ updateVersion('css/sidebar.css') }}">
+    <link rel="stylesheet" href="{{ updateVersion('css/style.css') }}">
+    <link rel="stylesheet" href="{{ updateVersion('css/cardhome.css') }}">
 
     {{-- DATA TABLE --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
@@ -29,13 +29,14 @@
             @include('layouts.sidebar') 
         @endif
     @endif
-    
+
     <div class="content">
         @include('layouts.navbar')
 
         {{-- CONTENT --}}
         <div class="content">
             @yield('content')
+        {{-- {{ updateVersion('css/public.text?v=1.01') }} --}}
         </div>
         {{-- END CONTENT --}}
     </div>
