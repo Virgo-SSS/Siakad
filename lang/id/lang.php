@@ -70,8 +70,11 @@ return [
     "pass_wrong"                    => "Email Atau Password Salah",
     "submit_only_3_times"           => "Anda hanya dapat mengirim 3 kali sehari",
     "already_input_biodata"         => "Anda sudah mengisi biodata",
+    "already_wrong_pass_8_times"    => "Email atau password salah<br>Silahkan Hubungi Kami Melalui Contact yang ter tertera jika mengalami kendala
+                                        <br> WhatsApp : +62 822-898-9000 <br> Email : asdfa@gmail.com",
+
+    "countdown_timer_login"         => 'Mohon Tunggu  ',
    
-    
 
     
     

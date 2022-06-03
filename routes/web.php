@@ -22,13 +22,6 @@ use App\Http\Controllers\biodataController;
 |
 */
 
-
-// WEB = Admin
-//  dosen = dosen
-// pelajar = pelajar
-// karyawan = karyawan
-// registrasi = calon pelajar
-
 // ROUTE FOR ALL guard
 Route::group(['middleware' => 'auth:web'], function() {
     Route::get('/', [homeController::class, 'index'])->name('home');
@@ -91,11 +84,10 @@ Route::get('/language/{langcode}', function($langcode){
 })->name('language');
 
 // LOGIN ROUTE
-// Route::get('/login', [logincontroller::class, 'index'])->name('login')->middleware('guest:web');
-
 Route::group(['middleware' => 'guest:web'], function() {
     Route::get('/login', [logincontroller::class, 'index'])->name('login');
-    Route::post('/login', [logincontroller::class, 'login'])->name('loginsubmit');
+    Route::post('/logins', [logincontroller::class, 'login'])->name('loginsubmit');
+    Route::post('/loginsess', [loginController::class, 'destroyLoginSession'])->name('destroy.Lsession');
     
     
     Route::get('/register',[registerController::class, 'index'])->name('register');

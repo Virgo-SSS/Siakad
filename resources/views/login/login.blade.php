@@ -34,9 +34,16 @@
                         <span id="password_error" style="color:red"></span>
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-block" id="btnSubmit">{{ __('lang.login') }}</button>
+                    @if(session()->has('wait30sec') || session()->has('wait1min') )
+                        <button type="submit" disabled class="btn btn-primary btn-block" id="btnSubmit">{{ __('lang.login') }}</button>
+                    @else
+                        <button type="submit" class="btn btn-primary btn-block" id="btnSubmit">{{ __('lang.login') }}</button>
+                    @endif
                     <div id="loader_login" style="text-align:center;font-size:20px"></div>
 
+                    <div style="color:red;margin-top:4px">
+                        <span id="countdown_timer_login"></span><span id="timer_cd"></span>
+                    </div>
                     <div class="sign-up mt-3">
                         {{ __('lang.want_to_be_a_student?') }} <a href="{{ route('register') }}">{{ __('lang.register') }}</a>
                     </div>

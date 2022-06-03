@@ -18,8 +18,13 @@
                 uiModal(r.message);
                 window.location.href = "{{ route('home') }}";
             }
-            if(r.status == 401){
-                uiModal(r.message);
+            if(r.status == 401 || r.status == 402 ){
+                $('#countdown_timer_login').html(r.message)
+            }
+            if(r.status == 403 || r.status == 433){
+                window.location.reload();
+                $('#btnSubmit').attr('disabled',false);
+                
             }
            
             if(r.status == 400){
@@ -44,7 +49,6 @@
                     
                     if(msg.invalid_password){
                         $('#password_error').html(msg.invalid_password);
-
                     }else{
                         $('#password_error').html('');
                     }
@@ -77,3 +81,53 @@
     });
 </script>
 
+<script>
+// countdown login if user to many wrong password
+const COUNTER_KEY = 'my-counter';
+
+function countDown(i, callback) {
+  //callback = callback || function(){};
+  timer = setInterval(function() {
+    minutes = parseInt(i / 60, 10);
+    seconds = parseInt(i % 60, 10);
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    $('#countdown_timer_login').html('{{ trans("lang.countdown_timer_login") }}')
+    $('#timer_cd').html(`${minutes} : ${seconds}`)
+
+    if ((i--) > 0) {
+      window.sessionStorage.setItem(COUNTER_KEY, i);
+    } else {
+      window.sessionStorage.removeItem(COUNTER_KEY);
+      clearInterval(timer);
+      callback();
+    }
+  }, 1000);
+}
+
+@if(session()->has('wait30sec') || session()->has('wait1min'))
+    window.onload = function() {
+        @if(session()->has('wait30sec'))
+        var countDownTime = window.sessionStorage.getItem(COUNTER_KEY) || 30;
+        @else
+        var countDownTime = window.sessionStorage.getItem(COUNTER_KEY) || 90;
+        @endif
+        countDown(countDownTime, function() {      
+            $.ajax({
+                url: "{{ route('destroy.Lsession') }}",
+                type: "POST",
+                data: { _token: "{{ csrf_token() }}"},
+                success: function(){
+                    console.log('success');
+                }
+            });
+            $('#btnSubmit').attr('disabled',false);
+            $('#countdown_timer_login').html('')
+            $('#timer_cd').html('')
+        });
+    }
+@endif
+
+</script>

@@ -71,8 +71,10 @@ return [
     "pass_wrong"                        => "Email or Password Is Wrong",
     "submit_only_3_times"               => "You Can Only Submit 3 Times A Day",
     "already_input_biodata"             => "You Already Input Biodata",
+    "already_wrong_pass_8_times"        => "Email or password is wrong<br>Please contact us via the contact listed if you have problems
+                                            <br> WhatsApp : +62 822-898-9000 <br> Email : asdfa@gmail.com",
    
-
+    "countdown_timer_login"             => "Please Wait ",
     
 ]
 
