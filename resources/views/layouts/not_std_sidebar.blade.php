@@ -16,13 +16,10 @@
         </li>
   
         <li >
-            {{-- <a href="{{ route('aspiration') }}"> --}}
-            <a href="#">
+            <a href="{{ route('aspiration') }}">
                 <i class="fa-solid fa-fire-flame-simple"></i> Aspiration
             </a>
-        </li>
-      
-     
+        </li>     
     </ul>
 
    

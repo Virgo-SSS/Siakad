@@ -20,17 +20,16 @@ class homeController extends Controller
         if(Auth::check()){
             $user = User::where('id', Auth::user()->id)->first();
 
-            if($user->isMahasiswa == 0 && $user->isActive == 0)
-                return view('home.not_student', compact('countries'));
-            if($user->isMahasiswa == 0 && $user->isActive == 1)
-                return view('home.not_student', compact('countries'));
+            if($user->isMahasiswa == 0){
+                if($user->isActive == 0 || $user->isActive == 1 ){
+                    return view('home.not_student', compact('countries'));
+                }
 
-
+            }
             return view('home.student', compact('countries'));
-        }
         
+        }
     }
-
     public function listaspiration()
     {
         $cp = aspiration::all();

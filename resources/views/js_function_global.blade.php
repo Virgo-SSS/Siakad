@@ -66,4 +66,13 @@
             $('#c_password_error').html('');
         }
     }
+
+    function validate_name(name) {
+        let str = name;
+        if(str == ''){
+            $('#name_error').html('{{ __("lang.empty_name") }}');
+        }else{
+            $('#name_error').html('');
+        } 
+    }
 </script>

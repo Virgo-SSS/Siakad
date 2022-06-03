@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ayahs', function (Blueprint $table) {
+        Schema::create('parents', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->enum('type',['F','M']); // F = FATHER && M = MOTHER
             $table->string('name');
-            $table->bigInteger('nik');
-            $table->date('tgllahir');
-            $table->bigInteger('no_hp');
-            $table->string('pendidikan_terakhir');
-            $table->string('penghasilan');
-            $table->integer('id_pelajar');
+            $table->string('citizenship');
+            $table->string('phone');
+            $table->string('jobs');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ayahs');
+        Schema::dropIfExists('father');
     }
 };

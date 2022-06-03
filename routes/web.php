@@ -9,8 +9,7 @@ use App\Http\Controllers\logincontroller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\AspirationController;
-
-
+use App\Http\Controllers\biodataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +39,9 @@ Route::group(['middleware' => 'auth:web'], function() {
 
     Route::get('/aspiration', [AspirationController::class, 'index'])->name('aspiration');  
     Route::post('/aspiration', [AspirationController::class, 'store'])->name('aspiration.store');
-    // // Cute Request 
+
+    Route::post('biodata', [biodataController::class, 'store'])->name('biodata.store');
+    // // Cuti Request 
     // Route::get('/cuti', [cutiController::class, 'index'])->name('cuti');
     // Route::get('/formcuti', [cutiController::class,'create'])->name('formcuti');
     // Route::post('/storecuti', [cutiController::class,'store'])->name('storecuti');

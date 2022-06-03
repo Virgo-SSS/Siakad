@@ -25,4 +25,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(aspirations::class);
     }
+
+    public function biodata()
+    {
+        return $this->hasOne(biodata::class);
+    }
+
+    public function parents()
+    {
+        return $this->hasMany(parents::class);
+    }
+
+
 }

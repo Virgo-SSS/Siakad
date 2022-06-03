@@ -13,15 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ibus', function (Blueprint $table) {
+        Schema::create('login_times', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->bigInteger('nik');
-            $table->date('tgllahir');
-            $table->bigInteger('no_hp');
-            $table->string('pendidikan_terakhir');
-            $table->string('penghasilan');
-            $table->integer('id_pelajar');
             $table->timestamps();
         });
     }
@@ -33,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ibus');
+        Schema::dropIfExists('login_times');
     }
 };
