@@ -14,11 +14,6 @@
                 <i class="fa-solid fa-house"></i> {{ __('lang.dashboard') }}
             </a>
         </li>
-        <li >
-            <a href="{{ route('home') }}">
-                <i class="fa-solid fa-house"></i> {{ __('lang.batch') }}
-            </a>
-        </li>
         
         <li >
             <a href="{{ route('aspiration') }}">
@@ -29,3 +24,5 @@
 
    
 </nav>
+
+

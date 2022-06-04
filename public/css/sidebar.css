@@ -153,6 +153,10 @@ a.article:hover {
 }
 
 .content{
+    padding: 0px;
+    width: 100%;
+}
+.content2{
     padding: 15px;
 }
 

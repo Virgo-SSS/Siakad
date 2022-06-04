@@ -29,7 +29,7 @@
         @include('pmb.layouts.navbar')
 
         {{-- CONTENT --}}
-        <div class="content">
+        <div class="content2">
             @yield('content')
         </div>
         {{-- END CONTENT --}}
