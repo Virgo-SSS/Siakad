@@ -36,12 +36,14 @@
                     <div class="form-group mt-3">
                         <label for="password">{{ __('lang.password') }}</label>
                         <input type="password" name="password"  id="password" onblur="validate_password(this.value)" class="form-control form-control-sm"  required>
+                        <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                         <span style="color:red" id="password_error"></span>
                     </div>
 
                     <div class="form-group mt-3">
                         <label for="confirm_password">{{ __('lang.confirm_password') }}</label>
                         <input type="password" name="confirm_password" id="confirm_password" onblur="validate_confirm_password(this.value)" class="form-control form-control-sm"  required>
+                        <span toggle="#confirm_password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                         <span style="color:red" id="c_password_error"></span>
                     </div>
     

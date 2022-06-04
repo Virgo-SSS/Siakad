@@ -26,10 +26,11 @@
                         <input type="email" name="email" id="email" required onblur=validate_email(this.value) class="form-control form-control-sm" aria-describedby="emailHelp">
                         <span id="email_error" style="color: red"></span>
                     </div>
-
+                     
                     <div class="form-group mt-3">
                         <label for="password">{{ __('lang.password') }}</label>
                         <input type="password" name="password" id="password" required onblur=validate_password(this.value) class="form-control form-control-sm" >
+                        <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                         <a href="#" style="float:right;font-size:15px; margin-bottom:10px">{{ __('lang.forgot_password?') }}</a>
                         <span id="password_error" style="color:red"></span>
                     </div>
