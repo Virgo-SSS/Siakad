@@ -1,3 +1,17 @@
+/* to dlete arrow form input number */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
 /* Form Edit View Account */
 .viewaccount {
     font-size: 13px;
@@ -145,3 +159,4 @@ background-color: #007BFF;
 .notif2 a:hover{
   transform: translateZ(-25px) rotateX(-90deg);
 }
+

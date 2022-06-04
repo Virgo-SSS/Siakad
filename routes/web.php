@@ -2,18 +2,15 @@
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\cutiController;
+
+
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\logincontroller;
+use App\Http\Controllers\biodataController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\registerController;
-use App\Http\Controllers\admin\adminController;
-use App\Http\Controllers\dosen\dosenController;
-use App\Http\Controllers\pelajar\pelajarController;
-use App\Http\Controllers\karyawan\karyawanController;
-use App\Http\Controllers\pelajar\registrasiController;
-use App\Http\Controllers\viewaccount\viewaccountController;
-
-
+use App\Http\Controllers\AspirationController;
+use App\Http\Controllers\forgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,37 +23,26 @@ use App\Http\Controllers\viewaccount\viewaccountController;
 |
 */
 
-
-// WEB = Admin
-//  dosen = dosen
-// pelajar = pelajar
-// karyawan = karyawan
-// registrasi = calon pelajar
-
 // ROUTE FOR ALL guard
 Route::group(['middleware' => 'auth:web'], function() {
     Route::get('/', [homeController::class, 'index'])->name('home');
     Route::get('/home', [homeController::class, 'index'])->name('home');  
 
-    // Route::get('/aspiration', [homeController::class, 'aspiration'])->name('aspiration');  
-    // Route::post('/submitaspiration', [homeController::class, 'submitaspiration'])->name('submitaspiration');  
+    Route::get('/profile', [ProfileController::class,'index'])->name('profile');
+    
 
+    Route::get('/aspiration', [AspirationController::class, 'index'])->name('aspiration');  
+    Route::post('/aspiration', [AspirationController::class, 'store'])->name('aspiration.store');
 
-    // //  VIEW ACCOUNT
-    // Route::get('/account', [viewaccountController::class, 'index'])->name('viewaccount');
-    // Route::get('/editaccount', [viewaccountController::class, 'create'])->name('editaccount');
-
-    // // Cute Request 
+    Route::post('biodata', [biodataController::class, 'store'])->name('biodata.store');
+    // // Cuti Request 
     // Route::get('/cuti', [cutiController::class, 'index'])->name('cuti');
     // Route::get('/formcuti', [cutiController::class,'create'])->name('formcuti');
     // Route::post('/storecuti', [cutiController::class,'store'])->name('storecuti');
 });
 
-Route::get('/language', function($langcode){
-    App::setLocale($langcode);
-    session()->put("lang_code",$langcode);
-    return redirect()->back();
-})->name('language');
+
+
 
 // Route::group(['middleware' => 'auth:web'], function() {
 
@@ -92,15 +78,25 @@ Route::get('/language', function($langcode){
 //     Route::get('/filter', [homeController::class, 'filteraspi'])->name('filter');
 // });
 
+// ROUTE TO CHANGE LANGUAGE
+Route::get('/language/{langcode}', function($langcode){
+    session()->put('lang_code', $langcode);
+    return redirect()->back();
+})->name('language');
 
 // LOGIN ROUTE
-// Route::get('/login', [logincontroller::class, 'index'])->name('login')->middleware('guest:web');
-Route::get('/login', [logincontroller::class, 'index'])->name('login');
-Route::post('/loginsubmit', [logincontroller::class, 'login'])->name('loginsubmit');
+Route::group(['middleware' => 'guest:web'], function() {
+    Route::get('/login', [logincontroller::class, 'index'])->name('login');
+    Route::post('/login', [logincontroller::class, 'login'])->name('loginsubmit');
+    Route::post('/loginsess', [loginController::class, 'destroyLoginSession'])->name('destroy.Lsession');
 
-
-Route::get('/register',[registerController::class, 'index'])->name('register');
-Route::post('/registersubmit',[registerController::class, 'register'])->name('registersubmit');
+    Route::get('/password/forgot', [forgotPasswordController::class, 'index'])->name('forgotpassword');
+    Route::post('/password/forgot', [forgotPasswordController::class, 'index'])->name('forgotpassword.store');
+    
+    
+    Route::get('/register',[registerController::class, 'index'])->name('register');
+    Route::post('/register',[registerController::class, 'register'])->name('registersubmit');
+});
 
 // Logout Route
 Route::get('/logout', [loginController::class, 'logout'])->name('logout');

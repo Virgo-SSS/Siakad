@@ -7,7 +7,7 @@
         <title>Siakad | Server Error</title>
 
       
-        <link rel="stylesheet" href="{{ asset('/css/errors/500.css') }}">
+        <link rel="stylesheet" href="{{ updateVersion('/css/errors/500.css') }}">
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">

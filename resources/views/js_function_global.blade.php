@@ -13,12 +13,67 @@
             }
         })
     }
+
+    function uiModal(msg){
+        $('#modalContent').html(msg);
+        $('#uiModal').modal('show');
+        setTimeout(() => {
+            $('#uiModal').modal('hide');
+        }, 2000);
+    }
+
+    function closeElement(id){
+        $('#'+id).hide();
+    }
+    
+    
+
 </script>
 
-<script type="text/javascript">
+<script>
   
-    function changeLanguage(lang){
-        window.location='{{ route("language") }}/'+lang;
+    function validate_email(email) {
+        let str = email;
+        if(str == ''){
+            $('#email_error').html('{{ __("lang.empty_email") }}');
+        }else if(str.indexOf('@') == -1){
+            $('#email_error').html('{{ __("lang.invalid_email") }}');
+        }
+        else{
+            $('#email_error').html('');
+        }
     }
-  
+
+    function validate_password(password) {
+        let str = password;
+        str = str.length;
+        if(str == ''){
+            $('#password_error').html('{{ __("lang.empty_password") }}');
+        }else if(str < 6){
+            $('#password_error').html('{{ __("lang.invalid_password") }}');
+        }else{
+            $('#password_error').html('');
+        }
+    }
+
+    function validate_confirm_password(confirm_password) {
+        let str = confirm_password;
+        let str2 = $('#password').val();
+        if(str == ''){
+            $('#c_password_error').html('{{ __("lang.empty_confirm_password") }}');
+        }else if(str != str2){
+            $('#c_password_error').html('{{ __("lang.invalid_confirm_pass") }}');
+        }else{
+            $('#c_password_error').html('');
+        }
+    }
+
+    function validate_name(name) {
+        let str = name;
+        if(str == ''){
+            $('#name_error').html('{{ __("lang.empty_name") }}');
+        }else{
+            $('#name_error').html('');
+        } 
+    }
 </script>

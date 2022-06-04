@@ -18,13 +18,34 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Virgo Stevanus',
-            'email' => 'virgo@gmail.com',
-            'password' => bcrypt('virgo')
+            'type' => 'MHS',
+            'nim' => 'BA123',
+            'name' => 'dev',
+            'email' => 'dev@gmail.com',
+            'password' => bcrypt('Abc12345'),
+            'isActive' => 1,
+       
         ]);
 
-        $this->call(dosenSeeder::class);
-        $this->call(registrasiSeeder::class);
-        $this->call(karyawanSeeder::class);
+        User::create([
+        
+            'type' => 'PMB',
+            'name' => 'test1',
+            'email' => 'test1@gmail.com',
+            'password' => bcrypt('Abc12345'),
+            'isActive' => 0,
+            
+        ]);
+
+        User::create([
+        
+            'type' => 'PMB',
+            'name' => 'test2',
+            'email' => 'test2@gmail.com',
+            'password' => bcrypt('Abc12345'),
+            'isActive' => 1,
+            
+        ]);
+
     }
 }

@@ -19,22 +19,11 @@ return [
         'guard' => 'web',
         'passwords' => 'users',
     ],
-    // 'dosens' => [
-    //     'guard' => 'dosen',
-    //     'model' => App\Models\dosen::class,
+    // 'calon' => [
+    //     'guard' => 'calon',
+    //     'model' => App\Models\calon_pelajar::class,
     // ],
-    // 'registrasis' => [
-    //     'guard' => 'registrasi',
-    //     'model' => App\Models\registrasi::class,
-    // ],
-    // 'karyawans' => [
-    //     'guard' => 'karyawan',
-    //     'model' => App\Models\karyawan::class,
-    // ],
-    // 'pelajars' => [
-    //     'guard' => 'pelajar',
-    //     'model' => App\Models\pelajar::class,
-    // ],
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -58,9 +47,9 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        // 'registrasi' => [
+        // 'calon' => [
         //     'driver' => 'session',
-        //     'provider' => 'registrasis',
+        //     'provider' => 'calons',
         // ],
         
     ],
@@ -87,9 +76,9 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        // 'registrasis' => [
+        // 'calons' => [
         //     'driver' => 'eloquent',
-        //     'model' => App\Models\registrasi::class,
+        //     'model' => App\Models\calon_pelajar::class,
         // ],
 
         // 'users' => [
