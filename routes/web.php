@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 
+use App\Http\Controllers\pmbController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\logincontroller;
 use App\Http\Controllers\biodataController;
@@ -35,6 +36,8 @@ Route::group(['middleware' => 'auth:web'], function() {
     Route::post('/aspiration', [AspirationController::class, 'store'])->name('aspiration.store');
 
     Route::post('biodata', [biodataController::class, 'store'])->name('biodata.store');
+
+    Route::get('/pmb/{id}', [pmbController::class,'index'])->name('batchPMB');
     // // Cuti Request 
     // Route::get('/cuti', [cutiController::class, 'index'])->name('cuti');
     // Route::get('/formcuti', [cutiController::class,'create'])->name('formcuti');

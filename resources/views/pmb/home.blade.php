@@ -19,11 +19,11 @@
                                 <p class="card-text">end = {{ $b->end_date }}</p>
                             
                                 @if($b->isActive == 0)
-                                <button disabled style="border-radius:20px;color:white;background-color:rgb(77, 77, 82);border-style:none;width:250px">CLOSED</button>
+                                    <button disabled style="border-radius:20px;color:white;background-color:rgb(77, 77, 82);border-style:none;width:250px">CLOSED</button>
                                 @else
-                                <a href="#">
-                                    <button style="border-radius:20px;color:white;background-color:blue;border-style:none;width:250px">OPEN</button>
-                                </a>
+                                    <a href="{{ route('batchPMB', $b->code) }}">
+                                        <button style="border-radius:20px;color:white;background-color:blue;border-style:none;width:250px">OPEN</button>
+                                    </a>
                                 @endif
                             </div>
                         </div>

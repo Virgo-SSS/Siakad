@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends(Config("global.aspirationPath").'.layouts.main')
 
 @section('content')
 
@@ -24,12 +24,10 @@
 
             <label for="titles" class="mt-3">{{ __('lang.title') }}</label>
             <input type="text" name="title" id="titles" onblur="validate_title(this.value)" class="form-control">
-            {{-- <input type="text" name="title" id="titles"  class="form-control"> --}}
             <span style="color:red" id="title"></span>
 
             <label for="descriptions" class="mt-3">{{ __('lang.description') }}</label>
             <textarea name="description" id="descriptions" onblur="validate_description(this.value)" cols="30" rows="10" class="form-control"></textarea>
-            {{-- <textarea name="description" id="descriptions" cols="30" rows="10" class="form-control"></textarea> --}}
             <span style="color:red" id="description"></span>
             
             <button type="submit" class="btn btn-primary mt-3" style="float: right">{{ __('lang.submit') }}</button>

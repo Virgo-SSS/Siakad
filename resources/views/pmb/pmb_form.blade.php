@@ -1,3 +1,7 @@
+@extends('pmb.layouts.main')
+
+
+@section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -183,3 +187,4 @@
         <button type="submit" class="btn btn-primary mt-3" style="float: right">{{ __('lang.submit') }}</button>
     </form>
 </div>
+@endsection
