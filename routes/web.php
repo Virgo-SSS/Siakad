@@ -6,10 +6,11 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\logincontroller;
+use App\Http\Controllers\biodataController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\AspirationController;
-use App\Http\Controllers\biodataController;
+use App\Http\Controllers\forgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,6 +89,9 @@ Route::group(['middleware' => 'guest:web'], function() {
     Route::get('/login', [logincontroller::class, 'index'])->name('login');
     Route::post('/logins', [logincontroller::class, 'login'])->name('loginsubmit');
     Route::post('/loginsess', [loginController::class, 'destroyLoginSession'])->name('destroy.Lsession');
+
+    Route::get('/password/forgot', [forgotPasswordController::class, 'index'])->name('forgotpassword');
+    Route::post('/password/forgot', [forgotPasswordController::class, 'index'])->name('forgotpassword.store');
     
     
     Route::get('/register',[registerController::class, 'index'])->name('register');

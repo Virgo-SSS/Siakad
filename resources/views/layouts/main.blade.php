@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ updateVersion('css/sidebar.css') }}">
     <link rel="stylesheet" href="{{ updateVersion('css/style.css') }}">
     <link rel="stylesheet" href="{{ updateVersion('css/cardhome.css') }}">
+    <link rel="stylesheet" href="{{ updateVersion('css/global/global_style.css') }}">
 
     {{-- DATA TABLE --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">

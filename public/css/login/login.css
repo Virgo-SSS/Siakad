@@ -1,5 +1,5 @@
 html,body { 
-	height: 100%; 
+	height: 100%;
 }
 
 .global-container{
@@ -31,15 +31,7 @@ form{
 	transition: 0.1s;
 }
 
-.field-icon {
-	float: right;
-	margin-left: -25px;
-	margin-top: -25px;
-	position: relative;
-	z-index: 2;
-	font-size:18px;
-	margin-right:7px;
-}
+
 
 /* .alert{
 	margin-bottom:-30px;
