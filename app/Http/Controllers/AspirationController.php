@@ -11,7 +11,7 @@ class AspirationController extends Controller
 {
     public function index()
     {
-        return view('menu.aspiration.index');
+        return view('aspiration');
     }
 
     public function store(Request $request)

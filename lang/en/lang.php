@@ -37,6 +37,8 @@ return [
     "mother_data"                       => "Mother Data",
     "father_data"                       => "Father Data",
     "jobs"                              => "Jobs",
+    "dashboard"                         => "Dashboard",
+    "batch"                             => "Choose Batch",
 
     
   

@@ -11,13 +11,18 @@
        
         <li >
             <a href="{{ route('home') }}">
-                <i class="fa-solid fa-house"></i> Dashboard
+                <i class="fa-solid fa-house"></i> {{ __('lang.dashboard') }}
             </a>
         </li>
-  
+        <li >
+            <a href="{{ route('home') }}">
+                <i class="fa-solid fa-house"></i> {{ __('lang.batch') }}
+            </a>
+        </li>
+        
         <li >
             <a href="{{ route('aspiration') }}">
-                <i class="fa-solid fa-fire-flame-simple"></i> Aspiration
+                <i class="fa-solid fa-fire-flame-simple"></i> {{ __('lang.aspiration') }}
             </a>
         </li>     
     </ul>

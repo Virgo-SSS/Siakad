@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->enum('type',['PMB','MHS']);
             $table->string('nim')->unique()->nullable();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
             $table->boolean('isActive');
-            $table->boolean('isMahasiswa');
+            $table->bigInteger('created_by')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

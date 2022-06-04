@@ -75,11 +75,11 @@ class registerController extends Controller
     public function create($data)
     {
         return User::create([
+                'type' => 'PMB',
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => bcrypt($data['password']),
                 'isActive' => 0,
-                'isMahasiswa' => 0
             ]);
     }
 }

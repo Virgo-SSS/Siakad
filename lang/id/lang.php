@@ -35,7 +35,8 @@ return [
     "mother_data"                   => "Data Ibu",
     "father_data"                   => "Data Ayah",
     "jobs"                          => "Pekerjaan",
-
+    "dashboard"                     => "Dashbor",
+    "batch"                         => "Pilihan Gelombang",
 
    
 

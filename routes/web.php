@@ -87,7 +87,7 @@ Route::get('/language/{langcode}', function($langcode){
 // LOGIN ROUTE
 Route::group(['middleware' => 'guest:web'], function() {
     Route::get('/login', [logincontroller::class, 'index'])->name('login');
-    Route::post('/logins', [logincontroller::class, 'login'])->name('loginsubmit');
+    Route::post('/login', [logincontroller::class, 'login'])->name('loginsubmit');
     Route::post('/loginsess', [loginController::class, 'destroyLoginSession'])->name('destroy.Lsession');
 
     Route::get('/password/forgot', [forgotPasswordController::class, 'index'])->name('forgotpassword');

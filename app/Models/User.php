@@ -13,12 +13,13 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
+        'type',
         'name',
         'email',
         'password',
         'nim',
         'isActive',
-        'isMahasiswa',
+        'created_by'
     ];
 
     public function aspirations()

@@ -23,21 +23,17 @@
 </head>
 <body>
 <div class="wrapper">
-    @if(auth()->check())
-        @if(auth('web')->user()->isMahasiswa == 0)   
-            @include('layouts.not_std_sidebar')
-        @else
-            @include('layouts.sidebar') 
-        @endif
-    @endif
+    
+        @include('student.layouts.sidebar') 
+   
 
     <div class="content">
-        @include('layouts.navbar')
+        @include('student.layouts.navbar')
 
         {{-- CONTENT --}}
         <div class="content">
             @yield('content')
-        {{-- {{ updateVersion('css/public.text?v=1.01') }} --}}
+        
         </div>
         {{-- END CONTENT --}}
     </div>
@@ -47,7 +43,7 @@
 @include('modal_global')
 
 {{-- JS --}}
-@include('layouts.js_function')
+@include('student.layouts.js_function')
 </body>
 
 </html>
