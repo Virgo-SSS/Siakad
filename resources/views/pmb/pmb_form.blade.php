@@ -2,7 +2,15 @@
 
 
 @section('content')
+
 <div class="container">
+    <ul class="ulNum">
+        <li class="active liNum"><span class="marker-number">1</span> <span class="marker-text">Biodata</span></li>
+        <li class="liNum"><span class="marker-number">2</span> <span class="marker-text">Kontak</span></li>
+        <li class="liNum"><span class="marker-number">3</span> <span class="marker-text">Jurusan</span></li>
+        <li class="liNum"><span class="marker-number">4</span> <span class="marker-text">Orang Tua</span></li>
+        <li class="liNum"><span class="marker-number">5</span> <span class="marker-text">Prestasi</span></li>
+    </ul> 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">

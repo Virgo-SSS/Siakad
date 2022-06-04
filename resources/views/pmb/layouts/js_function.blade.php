@@ -18,7 +18,7 @@
 <script src="https://kit.fontawesome.com/9fd8223cdb.js" ></script>
 
 {{-- sidebar JS --}}
-<script src="js/sidebar.js"></script>
+<script src="{{ asset('js/sidebar.js') }}"></script>
 
 @include('js_function_global')
 

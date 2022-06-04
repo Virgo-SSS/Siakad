@@ -160,3 +160,65 @@ background-color: #007BFF;
   transform: translateZ(-25px) rotateX(-90deg);
 }
 
+
+
+@import "compass/css3";
+
+.ulNum {
+  text-align: justify;
+  position: relative;
+  overflow: hidden;
+}
+.ulNum:before, .active:after {
+  content: '';
+  width: 100%;
+  border: 2px solid #21a2d1;
+  position: absolute;
+  top: 1em;
+  margin-top: -6px;
+  z-index: -1;
+}
+.active:after {
+  border-color: #b7b7b7;
+}
+.ulNum:after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+}
+.liNum {
+  width: 1.5em;
+  height: 1.5em;
+  text-align: center;
+  line-height: 1.7em;
+  border-radius: 50%;
+  background: #21a2d1;
+  margin: 0 1em;
+  display: inline-block;
+  color: white;
+  font-size: 1em;
+}
+
+.marker-number {
+  font-size: 18px;
+}
+
+.liNum.active {
+  background: #04497b;
+}
+
+.active ~ .liNum {
+  background: #b7b7b7;
+}
+
+.marker-text {
+  color: #7d7d7d;
+  font-size: 12px;
+  line-height: 16px;
+  width: 70px;
+  display: block;
+  margin-left: -21px;
+  margin-top: 2px;
+  font-style: italic;
+  font-family: Arial;
+}
