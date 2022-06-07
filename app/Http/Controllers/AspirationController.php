@@ -5,19 +5,26 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\aspiration;
 use Illuminate\Http\Request;
+use App\Repository\GlobalRepository;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
 
 class AspirationController extends Controller
 {
+    public function __construct()
+    {
+        $this->data = new GlobalRepository;
+    }
+
     public function index()
     {
+        $data = $this->data->getAppData();
+
         if(Auth::check()){
             if(Auth::user()->type == 'PMB') Config(['global.aspirationPath' => 'pmb']);
             if(Auth::user()->type == 'MHS') Config(['global.aspirationPath' => 'student']);
            
-            return view('aspiration');
+            return view('aspiration', $data);
         }
     }
 

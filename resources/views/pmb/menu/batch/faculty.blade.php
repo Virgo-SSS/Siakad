@@ -11,12 +11,12 @@
                 </div>
                 <div class="col-6">
                     <label for="father_name" class="form-label">{{ __('lang.batch') }} : </label>
-                    <input type="text" disabled value="{{ $batch->name }}" class="form-control" required>
+                    <input type="text" disabled value="{{ $ActiveBatchName }}" class="form-control" required>
                     <span id="Fname_error" style="color:red"></span>
                 </div>
                 <div class="col-6 mt-3">
                     <label for="father_name" class="form-label">{{ __('lang.price') }} : </label>
-                    <input type="text" disabled value="{{ $batch->price }}" class="form-control" required>
+                    <input type="text" disabled value="{{ $ActiveBatchPrice }}" class="form-control" required>
                     <span id="Fname_error" style="color:red"></span>
                 </div>
                 

@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repository\GlobalRepository;
 
 class ProfileController extends Controller
 {
-    public function index()
+    public function __construct()
     {
-        return view('menu.profile.index');
+        $this->data = new GlobalRepository;
+    }
+    public function index()
+    {   
+        $data = $this->data->getAppData();
+        return view('menu.profile.index', $data);
     }
 }

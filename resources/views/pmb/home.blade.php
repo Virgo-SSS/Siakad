@@ -21,7 +21,7 @@
                                 @if($b->isActive == 0)
                                     <button disabled style="border-radius:20px;color:white;background-color:rgb(77, 77, 82);border-style:none;width:250px">CLOSED</button>
                                 @else
-                                    <a href="{{ route('batchPMB', $b->code) }}">
+                                    <a href="{{ route('batchPMB', $b->id) }}">
                                         <button style="border-radius:20px;color:white;background-color:blue;border-style:none;width:250px">OPEN</button>
                                     </a>
                                 @endif
@@ -30,6 +30,8 @@
                     </div>
 
                 @endforeach
+            @else
+                Maaf saat ini Sedang tidak ada pendaftaran
             @endif
         </div>
     @else

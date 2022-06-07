@@ -31,7 +31,7 @@
     </div>
 
     <h3 class="mt-3">{{ __('lang.pls_fill_regis_data_form') }}</h3>
-    <form action="{{ route('pmb.store', $batch->id) }}" method="post" id="pmbForm" enctype="multipart/form-data">
+    <form action="{{ route('pmb.store', $ActiveBatchID) }}" method="post" id="pmbForm" enctype="multipart/form-data">
         @csrf
        
         @include('pmb.menu.batch.biodata')
