@@ -54,10 +54,10 @@
         }
     });
 
-    form('biodataForm','biodataLoader',function(r){
+    form('pmbForm','pmbLoader',function(r){
         if(r.status == 200){
             uiModal(r.message);
-            pageScroll();
+            // pageScroll();
             
         }
         if(r.status == 401){
@@ -84,6 +84,88 @@
 </script>
 
 <script>
+    function modalPMB(){
+        $('#PMBmodal').modal('show');
+    }
+    function submitPMB()
+    {
+        $('#pmbForm').submit();
+        $('PMBmodal').modal('hide');
+    }
+    function batchPaginateForm(id){
+        // 1 = biodata
+        // 2 = contact
+        // 3 = jurusan
+        // 4 = parents
+        // 5 = achievement
+        let code = id;
+        if(code == 1){
+            $('#biodata').css('display', 'block');
+            $('#contact').css('display', 'none');
+            $('#jurusan').css('display', 'none');
+            $('#parents').css('display', 'none');
+            $('#achievement').css('display', 'none');
+            $('#pg1').addClass('active');
+            $('#pg2').removeClass('active');
+            $('#pg3').removeClass('active');
+            $('#pg4').removeClass('active');
+            $('#pg5').removeClass('active');
+            
+        }
+        if(code == 2){
+            $('#contact').css('display', 'block');
+            $('#biodata').css('display', 'none');
+            $('#jurusan').css('display', 'none');
+            $('#parents').css('display', 'none');
+            $('#achievement').css('display', 'none');
+            $('#pg2').addClass('active');
+            $('#pg1').removeClass('active');
+            $('#pg3').removeClass('active');
+            $('#pg4').removeClass('active');
+            $('#pg5').removeClass('active');
+
+        }
+        if(code == 3){
+            $('#parents').css('display', 'block');
+            $('#biodata').css('display', 'none');
+            $('#contact').css('display', 'none');
+            $('#jurusan').css('display', 'none');
+            $('#achievement').css('display', 'none');
+            $('#pg3').addClass('active');
+            $('#pg1').removeClass('active');
+            $('#pg2').removeClass('active');
+            $('#pg4').removeClass('active');
+            $('#pg5').removeClass('active');
+
+        }
+        if(code == 4){
+            $('#jurusan').css('display', 'block');
+            $('#biodata').css('display', 'none');
+            $('#contact').css('display', 'none');
+            $('#parents').css('display', 'none');
+            $('#achievement').css('display', 'none');
+            $('#pg4').addClass('active');
+            $('#pg1').removeClass('active');
+            $('#pg2').removeClass('active');
+            $('#pg3').removeClass('active');
+            $('#pg5').removeClass('active');
+        }
+        if(code == 5){
+            $('#achievement').css('display', 'block');
+            $('#biodata').css('display', 'none');
+            $('#contact').css('display', 'none');
+            $('#jurusan').css('display', 'none');
+            $('#parents').css('display', 'none');
+            $('#pg5').addClass('active');
+            $('#pg1').removeClass('active');
+            $('#pg2').removeClass('active');
+            $('#pg3').removeClass('active');
+            $('#pg4').removeClass('active');
+            
+        }
+
+    }
+
     function pageScroll() {
         window.scrollBy(1,0);
         scrolldelay = setTimeout(pageScroll,10);
@@ -210,13 +292,4 @@
     }
 </script>
 
-<script>
-    $(document).ready( function () {
-        $('#admintable').DataTable({
-            searching: false,
-            responsive: true,
-        });
-        
-    } );
-</script>
 

@@ -15,6 +15,6 @@ class pmbController extends Controller
         if($batch == null || $batch->isActive == 0){
             return redirect()->back();
         }
-        return view ('pmb.pmb_form', compact('id','countries'));
+        return view ('pmb.menu.batch.batch_form', compact('id','countries','batch'));
     }
 }

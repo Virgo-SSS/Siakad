@@ -38,6 +38,7 @@ Route::group(['middleware' => 'auth:web'], function() {
     Route::post('biodata', [biodataController::class, 'store'])->name('biodata.store');
 
     Route::get('/pmb/{id}', [pmbController::class,'index'])->name('batchPMB');
+    Route::post('/pmb/{id}', [pmbController::class,'store'])->name('pmb.store');
     // // Cuti Request 
     // Route::get('/cuti', [cutiController::class, 'index'])->name('cuti');
     // Route::get('/formcuti', [cutiController::class,'create'])->name('formcuti');

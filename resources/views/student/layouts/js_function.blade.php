@@ -54,41 +54,7 @@
         }
     });
 
-    form('biodataForm','biodataLoader',function(r){
-        if(r.status == 200){
-            uiModal(r.message);
-            pageScroll();
-            
-        }
-        if(r.status == 401){
-            if(r.message){
-                uiModal(r.message);
-            }
-        }
-
-        if(r.status == 400){
-            if(r.message){
-                $.each(r.message, function(key, value){
-                    if(key == 'mother_jobs' || key =='mother_name' || key == 'mother_phone'){
-                        $('#M'+key+'_error').html(value);
-                    }
-                    if(key == 'father_jobs' || key =='father_name' || key == 'father_phone'){
-                        $('#F'+key+'_error').html(value);
-                    }
-                    $('#'+key+'_error').html(value);
-                });
-            }
-        }
-        
-    });
-</script>
-
-<script>
-    function pageScroll() {
-        window.scrollBy(1,0);
-        scrolldelay = setTimeout(pageScroll,10);
-    }
-
+   
 </script>
 
 <script>

@@ -37,8 +37,25 @@ return [
     "jobs"                          => "Pekerjaan",
     "dashboard"                     => "Dashbor",
     "batch"                         => "Pilihan Gelombang",
+    "next"                          => "Selanjutnya ->",
+    "previous"                      => "<- Sebelumnya",
+    "contact"                       => "Kontak",
+    "parents"                       => "Orang Tua",
+    "achivement"                    => "Prestasi",
+    "faculty"                       => "Fakultas",
 
-   
+    
+    "hallo_pmb_student"             => "selamat datang di siakad kampus ABCDEF
+                                        silahkan isi formulir pendaftaran di bawah untuk melanjutkan proses pendaftaran
+                                        harap isi formulir pendaftaran dengan benar dan jelas
+                                        Terima kasih.",
+    "old_school"                    => "Asal Sekolah",
+    "old_school_address"            => "Alamat Asal Sekolah",
+    "category_achivement"           => "Kategori Prestasi",
+    "program_studi"                 => "Program Studi",
+    "waktu_kuliah"                  => "Waktu Kuliah",
+    "price"                         => "Harga",
+
 
     // VALIDATION
     "empty_name"                    => "Kolom Nama tidak boleh kosong",
@@ -75,6 +92,8 @@ return [
                                         <br> WhatsApp : +62 822-898-9000 <br> Email : asdfa@gmail.com",
 
     "countdown_timer_login"         => 'Mohon Tunggu  ',
+    'pmb_msg'                       => 'Harap cek kembali data-data yang anda masukkan, 
+                                        jika sudah benar silahkan klik tombol submit',
    
 
     

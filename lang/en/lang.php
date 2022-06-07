@@ -39,8 +39,26 @@ return [
     "jobs"                              => "Jobs",
     "dashboard"                         => "Dashboard",
     "batch"                             => "Choose Batch",
+    "next"                              => "Next ->",
+    "previous"                          => "<- Previous",
+    "contact"                           => "Contact",
+    "parents"                           => "Parents",
+    "achivement"                        => "Achivements",
+    "faculty"                           => "Faculty",
 
-    
+
+    "hallo_pmb_student"                 => "welcome to the ABCDEF campus siakad
+                                            Please fill in the registration form below to continue the registration process
+                                            Please fill in the registration form correctly and clearly
+                                            Thank you",
+
+    "old_school"                        => "School-From",
+    "old_school_address"                => "School-From Address",
+    "category_achivement"               => "Category Achivement",
+    "program_studi"                     => "Study Program",
+    "waktu_kuliah"                      => "Study Time",
+    "price"                             => "Price",
+
   
 
     // VALIDATION
@@ -77,6 +95,8 @@ return [
                                             <br> WhatsApp : +62 822-898-9000 <br> Email : asdfa@gmail.com",
    
     "countdown_timer_login"             => "Please Wait ",
+    "pmb_msg"                           => "Please re-check the data you entered, 
+                                            if it is correct, please click the submit button",
     
 ]
 

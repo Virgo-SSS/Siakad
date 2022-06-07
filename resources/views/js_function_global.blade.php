@@ -25,7 +25,9 @@
     function closeElement(id){
         $('#'+id).hide();
     }
-    
+    function closeModal(id){
+        $('#'+id).modal('hide');
+    }
     
 
 </script>
