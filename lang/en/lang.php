@@ -59,7 +59,11 @@ return [
     "waktu_kuliah"                      => "Study Time",
     "price"                             => "Price",
 
-  
+    "province"                          => "Province",
+    "city"                              => "City",
+    "districts"                         => "District",
+    "urban_village"                     => "Urban Village",
+    "full_address"                      => "Full Address",
 
     // VALIDATION
     "empty_name"                        => "The Name field is required.",

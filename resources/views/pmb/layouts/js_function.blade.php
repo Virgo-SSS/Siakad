@@ -90,7 +90,7 @@
     function submitPMB()
     {
         $('#pmbForm').submit();
-        $('PMBmodal').modal('hide');
+        $('#PMBmodal').modal('hide');
     }
     function batchPaginateForm(id){
         // 1 = biodata
@@ -174,6 +174,10 @@
 </script>
 
 <script>
+    function pmbValidation(str)
+    {
+        let val = str;
+    }
     function validate_title(str){
         let str2 = str;
         if(str2 == ''){
@@ -293,3 +297,75 @@
 </script>
 
 
+{{-- jAVA SCRIPT FUNCTION FOR DYNAMINC DROPDOWN PMB FORM PROVINCE DISTRICT CITY --}}
+<script>
+    function clearCityDistrict(str)
+    {
+        let str2 = str;
+        if(str2 == ''){
+            $('input[id=city]').attr('disabled', true).val('');
+            $('input[id=district]').attr('disabled', true).val('');
+            $('#citys').empty();
+            $('#districts').empty();
+        }
+    }
+    
+    $(document).ready(function() {       
+        $('#province').on('change', function() {
+            var value = $('#province').val();
+            var cityID = $('#provinces [value="' + value + '"]').data('value');
+            if(cityID) {
+                $.ajax({
+                    url: '/getCity/'+cityID,
+                    type: "GET",
+                    data : {"_token":"{{ csrf_token() }}"},
+                    dataType: "json",
+                    success:function(data)
+                    {
+                        if(data){
+                            $('#citys').empty();
+                            $('#districts').empty();
+                            $('input[id=city]').attr('disabled', false).val('');
+                            $('input[id=district]').attr('disabled', true).val('');
+                            $.each(data, function(key, city){
+                                $('datalist[id="citys"]').append(`<option data-value="${city.id}" value="${city.name}">${city.name}</option>`);
+                            });
+                        }else{
+                            $('#citys').empty();
+                        }
+                    }
+                });
+            }else{
+                $('#citys').empty();
+            }
+        });
+
+        $('#city').on('change', function() {
+            var value2 = $('#city').val();
+            var districtID = $('#citys [value="' + value2 + '"]').data('value');
+            if(districtID) {
+                $.ajax({
+                    url: '/getDistrict/'+districtID,
+                    type: "GET",
+                    data : {"_token":"{{ csrf_token() }}"},
+                    dataType: "json",
+                    success:function(data)
+                    {
+                        if(data){
+                            $('#districts').empty();
+                            $('input[id=district]').attr('disabled', false).val('');
+                            $.each(data, function(key, district){
+                                $('datalist[id="districts"]').append(`<option data-value="${district.id}" value="${district.name}">${district.name}</option>`);
+                            });
+                        }else{
+                            $('#districts').empty();
+                        }
+                    }
+                });
+            }else{
+                $('#districts').empty();
+            }
+            
+        });
+    });
+</script>

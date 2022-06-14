@@ -56,6 +56,12 @@ return [
     "waktu_kuliah"                  => "Waktu Kuliah",
     "price"                         => "Harga",
 
+    "province"                      => "Provinsi",
+    "city"                          => "Kota",
+    "districts"                     => "Kecamatan",
+    "urban_village"                 => "Kelurahan",
+    "full_address"                  => "Alamat Lengkap",
+
 
     // VALIDATION
     "empty_name"                    => "Kolom Nama tidak boleh kosong",
@@ -94,6 +100,8 @@ return [
     "countdown_timer_login"         => 'Mohon Tunggu  ',
     'pmb_msg'                       => 'Harap cek kembali data-data yang anda masukkan, 
                                         jika sudah benar silahkan klik tombol submit',
+
+    
    
 
     

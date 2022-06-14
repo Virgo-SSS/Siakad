@@ -30,5 +30,6 @@
     </div>
     <button type="button" class="btn btn-primary mt-3" onclick="batchPaginateForm(4)" style="float: left">{{ __('lang.previous') }}</button>
     
+    {{-- Button submit is below  --}}
     <button type="button" onclick="modalPMB()" class="btn btn-primary mt-3" style="float: right">{{ __('lang.submit') }}</button>
 </div>

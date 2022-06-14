@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\batch;
 use App\Models\biodata;
 use App\Models\parents;
+use App\Models\Regency;
+use App\Models\Village;
+use App\Models\District;
+use App\Models\Province;
 use Illuminate\Http\Request;
 use App\Repository\GlobalRepository;
 use Illuminate\Support\Facades\Auth;
@@ -25,10 +30,12 @@ class pmbController extends Controller
         if($findBatch == null || $findBatch->isActive == 0){
             return redirect()->back();
         }
+
         $data['ActiveBatchID'] = $findBatch->id;
         $data['ActiveBatchName'] = $findBatch->name;
         $data['ActiveBatchPrice'] = $findBatch->price;
-
+        
+        $data['province'] = Province::all();
         return view ('pmb.menu.batch.batch_form', $data);
     }
 

@@ -18,34 +18,30 @@
                 </div>
                 <div class="col-6 mt-3">
                     <label for="gender" class="form-label">{{ __('lang.province') }} : </label>
-                    <select name="gender" id="gender" class="form-control" required>
-                        <option value="L">{{ __('lang.male') }}</option>
-                        <option value="P">{{ __('lang.female') }}</option>
-                    </select>
+                    <input list="provinces"  onblur="clearCityDistrict(this.value)" id="province" class="form-control"  autocomplete="off">
+                    <input type="hidden" name="province" value="">
+                    <datalist id="provinces">          
+                        @foreach($province as $prov)
+                            <option data-value="{{ $prov->id }}" value="{{ $prov->name }}">{{ $prov->name }}</option>
+                        @endforeach
+                    </datalist>
                 </div>
                 <div class="col-6 mt-3">
                     <label for="gender" class="form-label">{{ __('lang.city') }} : </label>
-                    <select name="gender" id="gender" class="form-control" required>
-                        <option value="L">{{ __('lang.male') }}</option>
-                        <option value="P">{{ __('lang.female') }}</option>
-                    </select>
+                    <input list="citys"  disabled id="city" class="form-control"  autocomplete="off">
+                    <input type="hidden" name="city" value="">
+                    <datalist id="citys">        
+                    </datalist>
                 </div>
                 <div class="col-6 mt-3">
-                    <label for="gender" class="form-label">{{ __('lang.kecamatan') }} : </label>
-                    <select name="gender" id="gender" class="form-control" required>
-                        <option value="L">{{ __('lang.male') }}</option>
-                        <option value="P">{{ __('lang.female') }}</option>
-                    </select>
+                    <label for="gender" class="form-label">{{ __('lang.districts') }} : </label>
+                    <input list="districts"  disabled id="district" class="form-control" autocomplete="off">
+                    <input type="hidden" name="district" value="">
+                    <datalist id="districts">          
+                    </datalist>
                 </div>
                 <div class="col-6 mt-3">
-                    <label for="gender" class="form-label">{{ __('lang.kelurahan') }} : </label>
-                    <select name="gender" id="gender" class="form-control" required>
-                        <option value="L">{{ __('lang.male') }}</option>
-                        <option value="P">{{ __('lang.female') }}</option>
-                    </select>
-                </div>
-                <div class="col-6 mt-3">
-                    <label for="email" class="form-label">alamat sekarang </label>
+                    <label for="email" class="form-label">{{ __('lang.full_address') }} :</label>
                     <input type="email" name="email" id="email" onblur="validate_email(this.value)" class="form-control"  aria-describedby="emailHelp" required>
                     <span id="email_error" style="color:red"></span>
                 </div>
