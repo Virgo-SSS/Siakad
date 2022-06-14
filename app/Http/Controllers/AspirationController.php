@@ -20,12 +20,7 @@ class AspirationController extends Controller
     {
         $data = $this->data->getAppData();
 
-        if(Auth::check()){
-            if(Auth::user()->type == 'PMB') Config(['global.aspirationPath' => 'pmb']);
-            if(Auth::user()->type == 'MHS') Config(['global.aspirationPath' => 'student']);
-           
-            return view('aspiration', $data);
-        }
+        return view('aspiration_global', $data);
     }
 
     public function store(Request $request)

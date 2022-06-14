@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth:web'], function() {
     Route::get('/home', [homeController::class, 'index'])->name('home');  
 
     Route::get('/profile', [ProfileController::class,'index'])->name('profile');
+    Route::get('/edit/profile/{id}', [ProfileController::class, 'edit'])->name('edit.profile');
     
 
     Route::get('/aspiration', [AspirationController::class, 'index'])->name('aspiration');  
@@ -39,6 +40,8 @@ Route::group(['middleware' => 'auth:web'], function() {
 
     Route::get('/pmb/{id}', [pmbController::class,'index'])->name('batchPMB');
     Route::post('/pmb/{id}', [pmbController::class,'store'])->name('pmb.store');
+
+    
     // // Cuti Request 
     // Route::get('/cuti', [cutiController::class, 'index'])->name('cuti');
     // Route::get('/formcuti', [cutiController::class,'create'])->name('formcuti');

@@ -14,6 +14,12 @@ class ProfileController extends Controller
     public function index()
     {   
         $data = $this->data->getAppData();
-        return view('menu.profile.index', $data);
+        return view('profile_global', $data);
+    }
+
+    public function edit($id)
+    {
+        $data = $this->data->getAppData();
+        return view('edit_profile_global', $data);
     }
 }

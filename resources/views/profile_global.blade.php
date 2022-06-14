@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends(Config("global.userPath").'.layouts.main')
 
 @section('content')
 <div class="row">
@@ -11,13 +11,12 @@
                     <img src="{{ asset('img/profile.jpg') }}" alt="" width="150px" rounded style="border-radius:100px">
                 @endif
                 <h4 class="mt-2">{{ auth()->user()->name }}</h4>
-                <p>Sistem Informasi</p>
-                <p>2121015</p>
+                
             </div>
 
             <div class="card-body text-center">
               <br>
-              <a href="#">
+              <a href="{{ route('edit.profile', Auth::user()->id) }}">
                   <button class="btn btn-outline-primary">EDIT</button>
               </a>
             </div>
@@ -41,17 +40,17 @@
                         <p class="card-text">Waktu Kuliah</p>
                     </div>
                     <div class="col-md-6">
-                        @if(auth('web')->user())
-                            <p class="card-text">: {{ auth()->user()->name }}</p>
-                            <p class="card-text">: -</p>
-                            <p class="card-text">: -</p>
-                            <p class="card-text">: -</p>
-                            <p class="card-text">: -</p>
-                            <p class="card-text">: -</p>
-                            <p class="card-text">: -</p>
-                            <p class="card-text">: -</p>
-                            <p class="card-text">: -</p>
-                        @endif
+                        
+                        <p class="card-text">: {{ auth()->user()->name }}</p>
+                        <p class="card-text">: {{ Auth::user()->nim ? Auth::user()->nim : '-' }}</p>
+                        <p class="card-text">: -</p>
+                        <p class="card-text">: -</p>
+                        <p class="card-text">: {{ Auth::user()->email }}</p>
+                        <p class="card-text">: -</p>
+                        <p class="card-text">: -</p>
+                        <p class="card-text">: -</p>
+                        <p class="card-text">: -</p>
+                       
                     </div>
                 </div>
             </div>
@@ -59,6 +58,7 @@
     </div>   
 </div>
 
+@if(config('global.userPath') == 'student')
 <div class="row">
     <div class="col-md-12 mt-3">
         <div class="card shadow">
@@ -109,6 +109,6 @@
         </div>
     </div>   
 </div>
-
+@endif
 
 @endsection
