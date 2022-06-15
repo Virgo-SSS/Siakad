@@ -20,12 +20,12 @@ class homeController extends Controller
     {
         $data = $this->data->getAppData();
 
+        
         if(Auth::check()){
-            $user = User::where('id', Auth::user()->id)->first();
 
-            if($user->type == 'PMB') return view('pmb.home', $data);
-            
-            return view('student.home', $data);
+            if(config('global.userPath') == 'pmb') return view(config('global.userPath') . '.home', $data);
+            if(config('global.userPath') == 'student')   return view(config('global.userPath') . '.home', $data);
+          
         }
     }
     

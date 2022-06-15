@@ -1,4 +1,4 @@
-@extends(Config("global.aspirationPath").'.layouts.main')
+@extends(config("global.userPath").'.layouts.main')
 
 @section('content')
 

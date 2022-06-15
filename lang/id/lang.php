@@ -2,7 +2,7 @@
 return [
     "password"                      => "Kata Sandi",
     "confirm_password"              => "Konfirmasi Kata Sandi",
-    "forgot_password?"              => "Lupa Kata Sandi?",
+    "forgot_password"               => "Lupa Kata Sandi",
     "login"                         => "Masuk",
     "logout"                        => "Keluar",
     "welcome_to_siakad"             => "Selamat Datang di SIAKAD",
@@ -62,6 +62,9 @@ return [
     "urban_village"                 => "Kelurahan",
     "full_address"                  => "Alamat Lengkap",
 
+    "morning"                       => "Pagi",
+    "night"                         => "Malam",
+    "shift"                         => "Shift",
 
     // VALIDATION
     "empty_name"                    => "Kolom Nama tidak boleh kosong",
@@ -79,6 +82,12 @@ return [
     "job_required"                  => "Kolom pekerjaan tidak boleh kosong",
     "citizenship_required"          => "Kolom kewarganegaraan tidak boleh kosong",
     "gender_required"               => "Kolom Jenis Kelamin tidak boleh kosong",
+    "province_required"             => "Kolom Provinsi Tidak Boleh Kosong",
+    "city_required"                 => "Kolom Kota Tidak Boleh Kosong",
+    "district_required"             => "Kolom Kecamatan Tidak Boleh Kosong",
+    "address_required"              => "Kolom alamat tidak boleh kosong",
+    "batch_required"                => "Kolom pilihan gelombang tidak boleh kosong",
+    "price_required"                => "Kolom harga tidak boleh kosong",
     
 
     "invalid_email"                 => "Email tidak valid",
@@ -99,7 +108,8 @@ return [
 
     "countdown_timer_login"         => 'Mohon Tunggu  ',
     'pmb_msg'                       => 'Harap cek kembali data-data yang anda masukkan, 
-                                        jika sudah benar silahkan klik tombol submit',
+                                        jika sudah benar silahkan klik tombol kirim',
+
 
     
    

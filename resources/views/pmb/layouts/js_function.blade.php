@@ -87,96 +87,16 @@
     function modalPMB(){
         $('#PMBmodal').modal('show');
     }
+
     function submitPMB()
     {
         $('#pmbForm').submit();
         $('#PMBmodal').modal('hide');
     }
-    function batchPaginateForm(id){
-        // 1 = biodata
-        // 2 = contact
-        // 3 = jurusan
-        // 4 = parents
-        // 5 = achievement
-        let code = id;
-        if(code == 1){
-            $('#biodata').css('display', 'block');
-            $('#contact').css('display', 'none');
-            $('#jurusan').css('display', 'none');
-            $('#parents').css('display', 'none');
-            $('#achievement').css('display', 'none');
-            $('#pg1').addClass('active');
-            $('#pg2').removeClass('active');
-            $('#pg3').removeClass('active');
-            $('#pg4').removeClass('active');
-            $('#pg5').removeClass('active');
-            
-        }
-        if(code == 2){
-            $('#contact').css('display', 'block');
-            $('#biodata').css('display', 'none');
-            $('#jurusan').css('display', 'none');
-            $('#parents').css('display', 'none');
-            $('#achievement').css('display', 'none');
-            $('#pg2').addClass('active');
-            $('#pg1').removeClass('active');
-            $('#pg3').removeClass('active');
-            $('#pg4').removeClass('active');
-            $('#pg5').removeClass('active');
-
-        }
-        if(code == 3){
-            $('#parents').css('display', 'block');
-            $('#biodata').css('display', 'none');
-            $('#contact').css('display', 'none');
-            $('#jurusan').css('display', 'none');
-            $('#achievement').css('display', 'none');
-            $('#pg3').addClass('active');
-            $('#pg1').removeClass('active');
-            $('#pg2').removeClass('active');
-            $('#pg4').removeClass('active');
-            $('#pg5').removeClass('active');
-
-        }
-        if(code == 4){
-            $('#jurusan').css('display', 'block');
-            $('#biodata').css('display', 'none');
-            $('#contact').css('display', 'none');
-            $('#parents').css('display', 'none');
-            $('#achievement').css('display', 'none');
-            $('#pg4').addClass('active');
-            $('#pg1').removeClass('active');
-            $('#pg2').removeClass('active');
-            $('#pg3').removeClass('active');
-            $('#pg5').removeClass('active');
-        }
-        if(code == 5){
-            $('#achievement').css('display', 'block');
-            $('#biodata').css('display', 'none');
-            $('#contact').css('display', 'none');
-            $('#jurusan').css('display', 'none');
-            $('#parents').css('display', 'none');
-            $('#pg5').addClass('active');
-            $('#pg1').removeClass('active');
-            $('#pg2').removeClass('active');
-            $('#pg3').removeClass('active');
-            $('#pg4').removeClass('active');
-            
-        }
-
-    }
-
+ 
     function pageScroll() {
         window.scrollBy(1,0);
         scrolldelay = setTimeout(pageScroll,10);
-    }
-
-</script>
-
-<script>
-    function pmbValidation(str)
-    {
-        let val = str;
     }
     function validate_title(str){
         let str2 = str;
@@ -196,125 +116,265 @@
         }
     }
 
-    function validateNIK(str){
-        let str2 = str;
-        if(str2 == ''){
-            $(`#nik_error`).html('{{ __("lang.nik_required") }}');
-        }else if(str2.length < 16){
-            $(`#nik_error`).html('{{ __("lang.invalid_nik") }}');
-        }else{
-            $(`#nik_error`).html('');
-        }
-    }
-    
-    function validatePhone(str){
-        let str2 = str;
-        if(str2 == ''){
-            $(`#phone_error`).html('{{ __("lang.phone_required") }}');
-        }else{
-            $(`#phone_error`).html('');
-        }
-    }
+</script>
 
-    function validatePOB(str){ // POB = place of birth
-        let str2 = str;
-        if(str2 == ''){
-            $(`#place_of_birth_error`).html('{{ __("lang.pob_required") }}');
-        }else{
-            $(`#place_of_birth_error`).html('');
+{{-- Function For validation form PMB --}}
+<script>
+    function pmbValidation(code,str)
+    {
+        let index = code;
+        let val = str;
+        if(index == 'nik'){
+            if(val == ''){
+                $(`#nik_error`).html('{{ __("lang.nik_required") }}');
+            }else if(val.length < 16){
+                $(`#nik_error`).html('{{ __("lang.invalid_nik") }}');
+            }else{
+                $(`#nik_error`).html('');
+            }
         }
-    }
 
-    function validateDOB(str){ // DOB = date of birth
-        let str2 = str;
-        if(str2 == ''){
-            $(`#date_of_birth_error`).html('{{ __("lang.dob_required") }}');
-        }else{
-            $(`#date_of_birth_error`).html('');
+        if(index == 'POB'){
+            if(val == ''){
+                $(`#place_of_birth_error`).html('{{ __("lang.pob_required") }}');
+            }else{
+                $(`#place_of_birth_error`).html('');
+            }
         }
-    }
 
-    function validateReligion(str){
-        let str2 = str;
-        if(str2 == ''){
-            $(`#religion_error`).html('{{ __("lang.religion_required") }}');
-        }else{
-            $(`#religion_error`).html('');
+        if(index == 'DOB'){
+            if(val == ''){
+                $(`#date_of_birth_error`).html('{{ __("lang.dob_required") }}');
+            }else{
+                $(`#date_of_birth_error`).html('');
+            }
         }
-    }
 
-    function validateFJobs(str){
-        let str2 = str;
-        if(str2 == ''){
-            $(`#Fjobs_error`).html('{{ __("lang.jobs_required") }}');
-        }else{
-            $(`#Fjobs_error`).html('');
+        if(index == 'religion'){
+            if(val == ''){
+                $(`#religion_error`).html('{{ __("lang.religion_required") }}');
+            }else{
+                $(`#religion_error`).html('');
+            }
         }
-    }
 
-    function validateMJobs(str){
-        let str2 = str;
-        if(str2 == ''){
-            $(`#Mjobs_error`).html('{{ __("lang.jobs_required") }}');
-        }else{
-            $(`#Mjobs_error`).html('');
+        if(index == "phone"){
+            if(val == ''){
+                $(`#phone_error`).html('{{ __("lang.phone_required") }}');
+            }else{
+                $(`#phone_error`).html('');
+            }
         }
-    }
 
-    function validateFName(name) {
-        let str = name;
-        if(str == ''){
-            $('#Fname_error').html('{{ __("lang.empty_name") }}');
-        }else{
-            $('#Fname_error').html('');
-        } 
-    }
-    function validateMName(name) {
-        let str = name;
-        if(str == ''){
-            $('#Mname_error').html('{{ __("lang.empty_name") }}');
-        }else{
-            $('#Mname_error').html('');
-        } 
-    }
+        if(index == "province"){
+            if(val == ''){
+                $('input[id=city]').attr('disabled', true).val('');
+                $('input[id=district]').attr('disabled', true).val('');
+                $('#province_error').html('{{ __("lang.province_required") }}');
+                $(`#city_error`).html('');
+                $(`#district_error`).html('');
+                $('#citys').empty();
+                $('#districts').empty();
+            }else{
+                $(`#province_error`).html('');
+            }
+        }
+        if(index == "city"){
+            if(val == ''){
+                $('input[id=district]').attr('disabled', true).val('');
+                $('#city_error').html('{{ __("lang.city_required") }}');
+                $('#districts').empty();
+            }else{
+                $(`#city_error`).html('');
+            }
+        }
+        if(index == "district"){
+            if(val == ''){
+                $('#district_error').html('{{ __("lang.district_required") }}');
+            }else{
+                $(`#district_error`).html('');
+            }
+        }
 
-    function validateFPhone(str){
-        let str2 = str;
-        if(str2 == ''){
-            $(`#Fphone_error`).html('{{ __("lang.phone_required") }}');
-        }else{
-            $(`#Fphone_error`).html('');
+        if(index == 'address'){
+            if(val == ''){
+                $(`#address_error`).html('{{ __("lang.address_required") }}');
+            }else{
+                $(`#address_error`).html('');
+            }
         }
-    }
-    function validateMPhone(str){
-        let str2 = str;
-        if(str2 == ''){
-            $(`#Mphone_error`).html('{{ __("lang.phone_required") }}');
-        }else{
-            $(`#Mphone_error`).html('');
+
+        if(index == 'Fname'){
+            if(val == ''){
+                $('#Fname_error').html('{{ __("lang.empty_name") }}');
+            }else{
+                $('#Fname_error').html('');
+            } 
         }
+
+        if(index == "Fjobs"){
+            if(val == ''){
+                $(`#Fjobs_error`).html('{{ __("lang.job_required") }}');
+            }else{
+                $(`#Fjobs_error`).html('');
+            }
+        }
+
+        if(index == "Fphone"){
+            if(val == ''){
+                $(`#Fphone_error`).html('{{ __("lang.phone_required") }}');
+            }else{
+                $(`#Fphone_error`).html('');
+            }
+        }
+
+        if(index == 'Mname'){
+            if(val == ''){
+                $('#Mname_error').html('{{ __("lang.empty_name") }}');
+            }else{
+                $('#Mname_error').html('');
+            } 
+        }
+        if(index == 'Mphone'){
+            if(val == ''){
+                $(`#Mphone_error`).html('{{ __("lang.phone_required") }}');
+            }else{
+                $(`#Mphone_error`).html('');
+            }
+        }
+        if(index == 'Mjobs'){
+            if(val == ''){
+                $(`#Mjobs_error`).html('{{ __("lang.job_required") }}');
+            }else{
+                $(`#Mjobs_error`).html('');
+            }
+        }
+        if(index == 'batch'){
+            if(val == ''){
+                $(`#batch_error`).html('{{ __("lang.batch_required") }}');
+            }else{
+                $(`#batch_error`).html('');
+            }
+        }
+        if(index == 'price'){
+            if(val == ''){
+                $(`#price_error`).html('{{ __("lang.price_required") }}');
+            }else{
+                $(`#price_error`).html('');
+            }
+        }
+        if(index == 'name_fac'){
+            if(val == ''){
+                $(`#name_fac_error`).html('{{ __("lang.empty_name") }}');
+            }else{
+                $(`#name_fac_error`).html('');
+            }
+        }
+       
     }
 </script>
 
+{{-- JavaScript for paginate pmb form --}}
+<script>
+    let number = 1;
+    let buttonMinus = document.getElementById("button-previous");
+    let buttonPlus = document.getElementById("button-next");
+    const pages = document.querySelectorAll(`[id^="page-"]`);
+    let page1 = document.getElementById("page-biodata");
+    let page2 = document.getElementById("page-contact");
+    let page3 = document.getElementById("page-parents");
+    let page4 = document.getElementById("page-faculty");
+    let page5 = document.getElementById("page-achivement");
+   
+  
+    const numberCheck = () => {
+      let localPage = parseInt(localStorage.getItem("page"));
+    //   console.log(localPage);
+      if (localPage) {
+        number = localPage;
+      } else {
+        number = 0;
+      }
+    };
+    
+    const numberPage = () => {
+        if(number == 0) {
+            $('#pg1').addClass('active');
+            $('#pg2').removeClass('active');
+            $('#pg3').removeClass('active');
+            $('#pg4').removeClass('active');
+            $('#pg5').removeClass('active');
+        }else if(number == 1) {
+            $('#pg1').removeClass('active');
+            $('#pg2').addClass('active');
+            $('#pg3').removeClass('active');
+            $('#pg4').removeClass('active');
+            $('#pg5').removeClass('active');
+        }else if(number == 2){
+            $('#pg1').removeClass('active');
+            $('#pg2').removeClass('active');
+            $('#pg3').addClass('active');
+            $('#pg4').removeClass('active');
+            $('#pg5').removeClass('active');
+        }else if(number == 3){
+            $('#pg1').removeClass('active');
+            $('#pg2').removeClass('active');
+            $('#pg3').removeClass('active');
+            $('#pg4').addClass('active');
+            $('#pg5').removeClass('active');
+        }else if(number == 4){
+            $('#pg1').removeClass('active');
+            $('#pg2').removeClass('active');
+            $('#pg3').removeClass('active');
+            $('#pg4').removeClass('active');
+            $('#pg5').addClass('active');
+        }
+    };
+
+    const changingNumber = (addition = true) => {
+      if (addition) {
+        number += 1;
+        changingPage(number);
+      } else {
+        number -= 1;
+        changingPage(number);
+      }
+    };
+
+    const changingPage = (number) => {
+        if (number == 0) {
+        buttonMinus.classList.add("pmbFormHidden");
+        } else if (number == 4) {
+        buttonPlus.classList.add("pmbFormHidden");
+        } else {
+        buttonMinus.classList.remove("pmbFormHidden");
+        buttonPlus.classList.remove("pmbFormHidden");
+        }
+
+        for (var i = 0; i < pages.length; i++) {
+        if (i !== number) {
+            pages[i].classList.add("pmbFormHidden");
+        } else {
+            // console.log(i);
+            pages[i].classList.remove("pmbFormHidden");
+        }
+        }
+        numberPage();
+        localStorage.setItem("page", number);
+    };
+
+    numberCheck();
+    changingPage(number);
+</script>
 
 {{-- jAVA SCRIPT FUNCTION FOR DYNAMINC DROPDOWN PMB FORM PROVINCE DISTRICT CITY --}}
 <script>
-    function clearCityDistrict(str)
-    {
-        let str2 = str;
-        if(str2 == ''){
-            $('input[id=city]').attr('disabled', true).val('');
-            $('input[id=district]').attr('disabled', true).val('');
-            $('#citys').empty();
-            $('#districts').empty();
-        }
-    }
     
     $(document).ready(function() {       
         $('#province').on('change', function() {
             var value = $('#province').val();
             var cityID = $('#provinces [value="' + value + '"]').data('value');
-            if(cityID) {
+            if(cityID) { 
                 $.ajax({
                     url: '/getCity/'+cityID,
                     type: "GET",
@@ -369,3 +429,4 @@
         });
     });
 </script>
+

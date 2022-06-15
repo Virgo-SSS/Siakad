@@ -42,7 +42,7 @@ class pmbController extends Controller
     
     public function store(Request $request, $id)
     {
-        $validate = $this->biodataValidation($request->all());
+        $validate = $this->pmbValidation($request->all());
 
         if($validate){
             if($validate->fails()){
@@ -98,7 +98,7 @@ class pmbController extends Controller
 
     }
 
-    private function biodataValidation($data)
+    private function pmbValidation($data)
     {
         $rules = [
             'name'                  => 'required',

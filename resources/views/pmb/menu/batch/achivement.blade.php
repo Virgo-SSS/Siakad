@@ -1,4 +1,4 @@
-<div style="display: none;" id="achievement">
+<div class="pmbFormHidden" id="page-achievement">
     <div class="card" style="background-color: #E9ECEF;margin-bottom:30px">
         <h5 class="mt-3 text-center">{{ __('lang.achivement') }}</h5>
 
@@ -28,7 +28,6 @@
             </div>
         </div>
     </div>
-    <button type="button" class="btn btn-primary mt-3" onclick="batchPaginateForm(4)" style="float: left">{{ __('lang.previous') }}</button>
     
     {{-- Button submit is below  --}}
     <button type="button" onclick="modalPMB()" class="btn btn-primary mt-3" style="float: right">{{ __('lang.submit') }}</button>

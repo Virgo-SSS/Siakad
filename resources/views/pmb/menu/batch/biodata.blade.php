@@ -1,4 +1,4 @@
-<div style="display: block;" id="biodata">
+<div class="pmbFormHidden" id="page-biodata">
 
     <div class="card" style="background-color: #E9ECEF;margin-bottom:30px">
         <h5 class="mt-3 text-center">Biodata</h5>
@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-6">
                     <label for="nik" class="form-label">NIK : </label>
-                    <input type="number" name="nik" id="nik" onblur="validateNIK(this.value)" min="0" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==16) return false;" class="form-control"  aria-describedby="emailHelp" required>
+                    <input type="number" name="nik" id="nik" onblur="pmbValidation('nik',this.value)" min="0" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==16) return false;" class="form-control"  aria-describedby="emailHelp" required>
                     <span id="nik_error" style="color:red"></span>
                 </div>
                 
@@ -39,21 +39,20 @@
             </div>
         
             <div class="row mt-3">
-                
                 <div class="col-6">
                     <label for="place_of_birth" class="form-label">{{ __('lang.place_of_birth') }} : </label>
-                    <input type="text" name="place_of_birth" id="place_of_birth" onblur="validatePOB(this.value)" class="form-control" required>
+                    <input type="text" name="place_of_birth" id="place_of_birth" onblur="pmbValidation('POB',this.value)" class="form-control" required>
                     <span id="place_of_birth_error" style="color:red"></span>
                 </div>
 
                 <div class="col-6">
                     <label for="date_of_birth" class="form-label">{{ __('lang.date_of_birth') }} : </label>
-                    <input type="date" name="date_of_birth" id="date_of_birth" onblur="validateDOB(this.value)" class="form-control" required>
+                    <input type="date" name="date_of_birth" id="date_of_birth" onblur="pmbValidation('DOB',this.value)" class="form-control" required>
                     <span id="date_of_birth_error" style="color:red"></span>
                 </div>
                 <div class="col-6">
                     <label for="religion" class="form-label">{{ __('lang.religion') }} : </label>
-                    <input type="text" name="religion" id="religion" onblur="validateReligion(this.value)" class="form-control"  required>
+                    <input type="text" name="religion" id="religion" onblur="pmbValidation('religion',this.value)" class="form-control"  required>
                     <span id="religion_error" style="color:red"></span>
                 </div>
                 
@@ -73,6 +72,5 @@
             </div>
         </div>
     </div>
-    <button type="button" class="btn btn-primary mt-3" onclick="batchPaginateForm(2)" style="float: right">{{ __('lang.next') }}</button>
     
 </div>
