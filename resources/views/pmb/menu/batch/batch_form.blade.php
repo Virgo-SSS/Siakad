@@ -32,7 +32,6 @@
 
     <div class="row">
         <div class="col-9">
-            {{ updateVersion('css/sidebar.css') }}
             <h3 class="mt-3">{{ __('lang.pls_fill_regis_data_form') }}</h3>
         </div>
         <div class="col-3" style="margin-top: 18px">
