@@ -22,7 +22,7 @@
                             onblur=validate_password(this.value) class="form-control form-control-sm">
                         <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                         <a href="{{ route('forgotpassword') }}" style="float:right;font-size:15px; margin-bottom:10px"
-                            class="text-decoration-none mt-4">{{ __('lang.forgot_password') }}</a>
+                            class="text-decoration-none mt-4">{{ __('lang.forgot_password') }} ?</a>
                         <span id="password_error" style="color:red"></span>
                     </div>
 
