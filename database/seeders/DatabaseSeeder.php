@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+         // always remember to make faculty id on faculty table is 1-1
+        $this->call(facultySeeder::class);
+        $this->call(program_of_studySeeder::class);
         $this->call(batchSeeder::class);
         $this->call(IndoRegionProvinceSeeder::class);
         $this->call(IndoRegionRegencySeeder::class);

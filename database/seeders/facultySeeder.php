@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\faculty;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class facultySeeder extends Seeder
 {
@@ -14,6 +15,26 @@ class facultySeeder extends Seeder
      */
     public function run()
     {
-        //
+        // always remember to make faculty id on faculty table is 1-10
+        $list = [
+            'Arts & Architecture',
+            'Education',
+            'History',
+            'Humanities',
+            'Languages',
+            'Engineering & Applied Science',
+            'Harvard Integrated Life Sciences',
+            'Mathematics',
+            'Social Sciences',
+            'Biological Sciences',
+            'Medical Sciences',
+            'Physical Sciences'
+        ];
+
+        foreach ($list as $faculty) {
+            faculty::create([
+                'name' => $faculty
+            ]);
+        }
     }
 }

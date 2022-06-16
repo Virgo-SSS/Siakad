@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('faculty_id');
-            $table->foreign('faculty_id')->references('id')->on('faculty');
-            $table->timestamps();
+            $table->foreign('faculty_id')->references('id')->on('faculty')->onDelete('cascade');
         });
     }
+    
 
     /**
      * Reverse the migrations.

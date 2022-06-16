@@ -38,6 +38,6 @@ class CreateRegenciesTables extends Migration
      */
     public function down()
     {
-        Schema::drop('regencies');
+        Schema::drop('city');
     }
 }
