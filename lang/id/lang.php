@@ -88,6 +88,9 @@ return [
     "address_required"              => "Kolom alamat tidak boleh kosong",
     "batch_required"                => "Kolom pilihan gelombang tidak boleh kosong",
     "price_required"                => "Kolom harga tidak boleh kosong",
+    "faculty_required"              => "Kolom fakultas tidak boleh kosong",
+    "program_of_study_required"     => "Kolom program studi tidak boleh kosong",
+    "study_time_required"           => "Kolom waktu kuliah tidak boleh kosong",
     
 
     "invalid_email"                 => "Email tidak valid",

@@ -91,7 +91,11 @@ return [
     "address_required"                  => "The Address field is required",
     "batch_required"                    => "The Batch field is required",
     "price_required"                    => "The Price field is required",
+    "faculty_required"                  => "The Faculty field is required",
+    "program_of_study_required"         => "The Study Program field is required",
+    "study_time_required"               => "The Study Time field is required",
     
+
     
     "invalid_email"                     => "The email must be a valid email address.",
     "invalid_password"                  => "Password must be at least 6 characters",

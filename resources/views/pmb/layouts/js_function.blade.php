@@ -270,6 +270,34 @@
                 $(`#name_fac_error`).html('');
             }
         }
+
+        if(index == 'faculty'){
+            if(val == ''){
+                $(`#program_of_study`).empty();
+                $('#program_of_study').attr('disabled', true).val('');
+                $(`#faculty_error`).html('{{ __("lang.faculty_required") }}');
+            }else{
+                $(`#faculty_error`).html('');
+            }
+        }
+
+        if(index == 'program_of_study'){
+            if(val == ''){
+                $(`#program_of_study_error`).html('{{ __("lang.program_of_study_required") }}');
+            }else{
+                $(`#program_of_study_error`).html('');
+            }
+        }
+
+        if(index == 'study_time'){
+            if(val == ''){
+                $(`#study_time_error`).html('{{ __("lang.study_time_required") }}');
+            }else{
+                $(`#study_time_error`).html('');
+            }
+        }
+
+        // ACHIVEMENT DIDN'T HAD A ERROR MESSAGE, BCS NOT ALL STUDENT HAVE ACHIVEMENT
        
     }
 </script>
@@ -289,7 +317,7 @@
   
     const numberCheck = () => {
       let localPage = parseInt(localStorage.getItem("page"));
-    //   console.log(localPage);
+   
       if (localPage) {
         number = localPage;
       } else {
@@ -342,25 +370,31 @@
     };
 
     const changingPage = (number) => {
-        if (number == 0) {
-        buttonMinus.classList.add("pmbFormHidden");
-        } else if (number == 4) {
-        buttonPlus.classList.add("pmbFormHidden");
-        } else {
-        buttonMinus.classList.remove("pmbFormHidden");
-        buttonPlus.classList.remove("pmbFormHidden");
-        }
+        if(buttonMinus && buttonPlus){
 
-        for (var i = 0; i < pages.length; i++) {
-        if (i !== number) {
-            pages[i].classList.add("pmbFormHidden");
-        } else {
-            // console.log(i);
-            pages[i].classList.remove("pmbFormHidden");
+            if (number == 0) {
+            buttonMinus.classList.add("pmbFormHidden");
+            } else if (number == 4) {
+            buttonPlus.classList.add("pmbFormHidden");
+            } else {
+            buttonMinus.classList.remove("pmbFormHidden");
+            buttonPlus.classList.remove("pmbFormHidden");
+            }
+
+            for (var i = 0; i < pages.length; i++) {
+            if (i !== number) {
+                pages[i].classList.add("pmbFormHidden");
+            } else {
+                // console.log(i);
+                pages[i].classList.remove("pmbFormHidden");
+            }
+            }
+            numberPage();
+            localStorage.setItem("page", number);
         }
+        else{
+            localStorage.setItem("page", 0);
         }
-        numberPage();
-        localStorage.setItem("page", number);
     };
 
     numberCheck();
@@ -426,6 +460,34 @@
                 $('#districts').empty();
             }
             
+        });
+
+        $('#faculty').on('change', function() {
+            var posID = $('#faculty').val();
+            if(posID) { 
+                $.ajax({
+                    url: '/getpos/'+posID,
+                    type: "GET",
+                    data : {"_token":"{{ csrf_token() }}"},
+                    dataType: "json",
+                    success:function(data)
+                    {
+                        if(data){
+                            $('#program_of_study').empty();
+                            $('select[id="program_of_study"]').append(`<option value=" " disabled></option>`);
+                            $('select[id=program_of_study]').attr('disabled', false).val('');
+                            $.each(data, function(key, pos){
+                                $('select[id="program_of_study"]').append(`<option value="${pos.id}">${pos.name}</option>`);
+                            });
+                        }else{
+                            $('#program_of_study').empty();
+                            
+                        }
+                    }
+                });
+            }else{
+                $('#program_of_study').empty();
+            }
         });
     });
 </script>

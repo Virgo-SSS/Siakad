@@ -5,16 +5,14 @@ namespace App\Http\Controllers;
 
 use App\Models\batch;
 use App\Models\biodata;
+use App\Models\faculty;
 use App\Models\parents;
-use App\Models\Regency;
-use App\Models\Village;
-use App\Models\District;
 use App\Models\Province;
 use Illuminate\Http\Request;
 use App\Repository\GlobalRepository;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Monarobase\CountryList\CountryListFacade;
+
 
 class pmbController extends Controller
 {
@@ -36,6 +34,7 @@ class pmbController extends Controller
         $data['ActiveBatchPrice'] = $findBatch->price;
         
         $data['province'] = Province::all();
+        $data['faculty'] = faculty::all();
         return view ('pmb.menu.batch.batch_form', $data);
     }
 

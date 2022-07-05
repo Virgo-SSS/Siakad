@@ -1,9 +1,12 @@
 <?php
 
 use App\Models\Regency;
+use App\Models\District;
+
+
+use App\Models\program_of_study;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
-
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\pmbController;
 use App\Http\Controllers\homeController;
@@ -13,7 +16,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\AspirationController;
 use App\Http\Controllers\forgotPasswordController;
-use App\Models\District;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,13 +46,18 @@ Route::group(['middleware' => 'auth:web'], function() {
     Route::post('/pmb/{id}', [pmbController::class,'store'])->name('pmb.store');
 
     Route::get('getCity/{id}', function ($id) {
-        $city = Regency::where('province_id',$id)->get();
+        $city = DB::table('city')->where('province_id',$id)->get();
         return response()->json($city);
     });
 
     Route::get('getDistrict/{id}', function ($id) {
-        $district = District::where('regency_id',$id)->get();
+        $district = DB::table('districts')->where('regency_id',$id)->get();
         return response()->json($district);
+    });
+
+    Route::get('getpos/{id}', function ($id) {
+        $pos = DB::table('program_of_study')->where('faculty_id',$id)->get();
+        return response()->json($pos);
     });
     // // Cuti Request 
     // Route::get('/cuti', [cutiController::class, 'index'])->name('cuti');

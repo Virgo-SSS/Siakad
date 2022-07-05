@@ -55,7 +55,7 @@
         @include('pmb.menu.batch.faculty')
         @include('pmb.menu.batch.achivement')
 
-        {{-- button submit nya ada di achivement --}}
+        {{-- button submit nya ada di modal  --}}
     </form>
    
 </div>

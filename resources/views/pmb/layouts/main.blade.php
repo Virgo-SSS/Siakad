@@ -41,6 +41,7 @@
 
 {{-- JS --}}
 @include('pmb.layouts.js_function')
+@yield('script_js')
 </body>
 
 </html>
